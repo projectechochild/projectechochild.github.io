@@ -107,3 +107,11 @@ function initPageTransitions() {
     });
   });
 }
+
+function flipCard(card) {
+  card.classList.toggle('flipped');
+  const iframe = card.querySelector('iframe');
+  if (iframe && !iframe.src.includes('embedded=true')) {
+    iframe.src = iframe.src + '?embedded=true';
+  }
+}
