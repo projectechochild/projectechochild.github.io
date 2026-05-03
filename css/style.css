@@ -1122,6 +1122,148 @@ footer p {
   .logo {
     font-size: 1.5rem;
   }
+
+  .character-card {
+    height: auto;
+  }
+
+  .character-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .character-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .modal-form {
+    height: 450px;
+  }
+
+  .intro-title {
+    font-size: 2.5rem;
+  }
+
+  .intro-image {
+    width: 200px;
+  }
+
+  .hero-bg-image {
+    animation: heroImageMoveMobile 15s ease-in-out infinite, flicker 8s infinite;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .character-list {
+    gap: 15px;
+  }
+
+  .card {
+    padding: 20px;
+  }
+
+  .comics-grid {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+
+  .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.8rem;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+  }
+
+  .intro-title {
+    font-size: 2rem;
+  }
+
+  .intro-image {
+    width: 150px;
+  }
+
+  .btn {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+
+  .character-header-left h3 {
+    font-size: 1.2rem;
+  }
+
+  .character-num {
+    font-size: 1.5rem;
+    min-width: 40px;
+  }
+}
+
+@keyframes heroImageMoveMobile {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  25% { transform: scale(1.05) translate(-5px, -5px); }
+  50% { transform: scale(1.02) translate(5px, 3px); }
+  75% { transform: scale(1.08) translate(-3px, 5px); }
+}
+
+  nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    background: var(--bg-secondary);
+    padding: 20px;
+    border-bottom: 2px solid var(--accent);
+    transform: translateY(-100%);
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+  }
+
+  nav.open {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+    animation: flicker 3s infinite;
+  }
+
+  nav ul {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  nav a {
+    display: block;
+    padding: 12px;
+  }
+
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero {
+    padding: 60px 0;
+  }
+
+  h2 {
+    font-size: 1.8rem;
+  }
+
+  .logo {
+    font-size: 1.5rem;
+  }
 }
 
 @keyframes flicker {
