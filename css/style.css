@@ -191,6 +191,21 @@ a, button, .btn, .card, .location-card, .comic-item, .gallery-item, .crew-member
   gap: 15px;
 }
 
+.character-header-left img.character-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--accent);
+  filter: grayscale(50%);
+  transition: filter 0.3s, transform 0.3s;
+}
+
+.character-card:hover .character-header-left img.character-img {
+  filter: grayscale(0%);
+  transform: scale(1.1);
+}
+
 .character-num {
   font-family: var(--font-heading);
   font-size: 2rem;
