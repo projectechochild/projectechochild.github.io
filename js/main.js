@@ -192,3 +192,35 @@ function initEscapeKey() {
     }
   });
 }
+
+// Swipe navigation for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', function (e) {
+  touchStartX = e.changedTouches[0].screenX;
+});
+
+document.addEventListener('touchend', function (e) {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+});
+
+function handleSwipe() {
+  const swipeThreshold = 50;
+  const diff = touchStartX - touchEndX;
+
+  if (Math.abs(diff) < swipeThreshold) return;
+
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const pageOrder = ['index.html', 'cast.html', 'locations.html', 'behind-scenes.html', 'horror-stories.html', 'comics.html', 'about.html'];
+  const currentIndex = pageOrder.indexOf(currentPage);
+
+  if (currentIndex === -1) return;
+
+  if (diff > 0 && currentIndex < pageOrder.length - 1) {
+    window.location.href = pageOrder[currentIndex + 1];
+  } else if (diff < 0 && currentIndex > 0) {
+    window.location.href = pageOrder[currentIndex - 1];
+  }
+}
