@@ -5,8 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Echo Child - Short Film</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    /* Initial state: hide page content until intro completes */
+    body.loading .page-wrapper {
+      opacity: 0;
+      pointer-events: none;
+    }
+  </style>
 </head>
-<body>
+<body class="loading">
   <!-- Intro Loader -->
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
@@ -15,6 +22,7 @@
     </div>
   </div>
 
+  <div class="page-wrapper">
   <header>
     <div class="container header-inner">
       <div class="logo">Echo Child</div>
@@ -86,6 +94,7 @@
       </div>
     </div>
   </footer>
+  </div>
 
   <script src="js/main.js"></script>
 </body>

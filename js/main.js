@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
+  initIntroLoader();
   initMobileNav();
   initActiveNav();
   initSmoothScroll();
@@ -6,6 +7,40 @@ document.addEventListener('DOMContentLoaded', function () {
   initPageTransitions();
   initEscapeKey();
 });
+
+function initIntroLoader() {
+  const introLoader = document.getElementById('intro-loader');
+  if (!introLoader) return;
+
+  // Prevent scrolling during intro
+  document.body.style.overflow = 'hidden';
+
+  // Remove intro after animation completes (2.5s delay + 0.5s fade = 3s total)
+  setTimeout(function () {
+    finishIntro();
+  }, 3000);
+
+  // Allow skipping intro on click
+  introLoader.addEventListener('click', function () {
+    finishIntro();
+  });
+}
+
+function finishIntro() {
+  const introLoader = document.getElementById('intro-loader');
+  if (!introLoader) return;
+
+  introLoader.classList.add('hidden');
+  document.body.classList.remove('loading');
+  document.body.style.overflow = '';
+
+  // Remove from DOM after transition
+  setTimeout(function () {
+    if (introLoader && introLoader.parentNode) {
+      introLoader.parentNode.removeChild(introLoader);
+    }
+  }, 500);
+}
 
 function initMobileNav() {
   const toggle = document.querySelector('.mobile-toggle');
