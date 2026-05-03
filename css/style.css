@@ -6,6 +6,103 @@
   box-sizing: border-box;
 }
 
+/* Intro Loader */
+.intro-loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-primary);
+  z-index: 99999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: introFadeOut 0.5s ease-out 2.5s forwards;
+}
+
+.intro-content {
+  text-align: center;
+  animation: introGlitch 3s infinite;
+}
+
+.intro-image {
+  width: 300px;
+  height: auto;
+  opacity: 0;
+  animation: introImageFadeIn 1s ease-out 0.5s forwards, float 6s ease-in-out infinite 1.5s;
+  filter: grayscale(50%) contrast(1.2);
+}
+
+.intro-title {
+  font-family: var(--font-heading);
+  font-size: 4rem;
+  color: #ffffff;
+  font-weight: 700;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  margin-top: 20px;
+  opacity: 0;
+  animation: introTextFadeIn 1s ease-out 1s forwards, titleGlitch 4s infinite 2s;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.8), 2px 2px 0 var(--accent-blood), 0 0 40px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes introFadeOut {
+  0% { opacity: 1; visibility: visible; }
+  100% { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+@keyframes introImageFadeIn {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 0.7; transform: scale(1); }
+}
+
+@keyframes introTextFadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes introGlitch {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 0); }
+  40% { transform: translate(2px, 0); }
+  60% { transform: translate(-1px, 0); }
+  80% { transform: translate(1px, 0); }
+}
+
+/* Hero Background Image */
+.hero {
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/images/echochild.jpg');
+  background-size: cover;
+  background-position: center;
+  opacity: 0.2;
+  animation: heroImageMove 20s ease-in-out infinite, flicker 8s infinite;
+  filter: grayscale(50%) contrast(1.2) brightness(0.7);
+  z-index: 0;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 1;
+}
+
+@keyframes heroImageMove {
+  0%, 100% { transform: scale(1) translate(0, 0); }
+  25% { transform: scale(1.1) translate(-10px, -10px); }
+  50% { transform: scale(1.05) translate(10px, 5px); }
+  75% { transform: scale(1.15) translate(-5px, 10px); }
+}
+
 :root {
   --bg-primary: #0a0a0a;
   --bg-secondary: #1a1a2e;
