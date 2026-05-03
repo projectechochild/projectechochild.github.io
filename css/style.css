@@ -13,8 +13,8 @@
   --accent: #e94560;
   --accent-dark: #c23152;
   --accent-blood: #8b0000;
-  --text-primary: #eee;
-  --text-secondary: #aaa;
+  --text-primary: #ffffff;
+  --text-secondary: #ddd;
   --border: #333;
   --shadow: rgba(233, 69, 96, 0.2);
   --font-heading: 'Creepster', cursive;
@@ -103,11 +103,14 @@ a, button, .btn, .card, .location-card, .comic-item, .gallery-item, .crew-member
 }
 
 .character-header-left h3 {
-  color: var(--accent);
+  color: #ffffff;
   font-family: var(--font-heading);
   font-size: 1.5rem;
   margin: 0;
   letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.6), 2px 2px 0 var(--accent-blood);
+  animation: titleGlitch 4s infinite;
 }
 
 .character-header-left .character-role {
@@ -339,12 +342,12 @@ header {
 .logo {
   font-family: var(--font-heading);
   font-size: 2rem;
-  font-weight: 400;
-  color: var(--accent);
+  font-weight: 700;
+  color: #ffffff;
   letter-spacing: 3px;
   text-transform: uppercase;
-  animation: flicker 5s infinite;
-  text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+  animation: flicker 5s infinite, titleGlitch 4s infinite;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.8), 2px 2px 0 var(--accent-blood), 0 0 20px rgba(255, 255, 255, 0.3);
 }
 
 nav ul {
@@ -423,11 +426,12 @@ nav a.active::after {
 .hero h1 {
   font-family: var(--font-heading);
   font-size: 3.5rem;
-  color: var(--accent);
+  color: #ffffff;
   margin-bottom: 20px;
   letter-spacing: 5px;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(233, 69, 96, 0.6), 2px 2px 0 var(--accent-blood);
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(233, 69, 96, 0.8), 2px 2px 0 var(--accent-blood), 0 0 40px rgba(255, 255, 255, 0.3);
   animation: titleGlitch 4s infinite;
 }
 
@@ -504,20 +508,23 @@ section {
 h2 {
   font-family: var(--font-subheading);
   font-size: 2.2rem;
-  color: var(--accent);
+  color: #ffffff;
   margin-bottom: 30px;
   text-align: center;
   letter-spacing: 2px;
-  animation: flicker 6s infinite;
-  text-shadow: 0 0 15px rgba(233, 69, 96, 0.4);
+  font-weight: 700;
+  animation: flicker 6s infinite, titleGlitch 4s infinite;
+  text-shadow: 0 0 15px rgba(233, 69, 96, 0.6), 2px 2px 0 var(--accent-blood), 0 0 30px rgba(255, 255, 255, 0.2);
 }
 
 h3 {
   font-family: var(--font-heading);
   font-size: 1.5rem;
-  color: var(--text-primary);
+  color: #ffffff;
   margin-bottom: 15px;
   letter-spacing: 1px;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
 }
 
 p {
@@ -744,10 +751,12 @@ p {
 }
 
 .location-card h3 {
-  color: var(--accent);
+  color: #ffffff;
   font-size: 1.2rem;
   margin-bottom: 10px;
   font-family: var(--font-heading);
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(233, 69, 96, 0.6);
 }
 
 .location-card .status {
