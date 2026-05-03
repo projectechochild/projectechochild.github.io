@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initSmoothScroll();
   initScrollAnimations();
   initPageTransitions();
+  initEscapeKey();
 });
 
 function initMobileNav() {
@@ -47,7 +48,7 @@ function initSmoothScroll() {
 }
 
 function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.card, .location-card, .comic-item, .gallery-item, .crew-member');
+  const animatedElements = document.querySelectorAll('.card, .location-card, .comic-item, .gallery-item, .crew-member, .character-card');
 
   if (!('IntersectionObserver' in window)) {
     animatedElements.forEach(function (el) {
@@ -72,7 +73,7 @@ function initScrollAnimations() {
 
   animatedElements.forEach(function (el) {
     el.style.opacity = '0';
-    if (el.classList.contains('location-card')) {
+    if (el.classList.contains('location-card') || el.classList.contains('character-card')) {
       el.style.transform = 'translateX(-30px)';
     } else {
       el.style.transform = 'translateY(30px)';
@@ -108,10 +109,51 @@ function initPageTransitions() {
   });
 }
 
-function flipCard(card) {
-  card.classList.toggle('flipped');
-  const iframe = card.querySelector('iframe');
-  if (iframe && !iframe.src.includes('embedded=true')) {
-    iframe.src = iframe.src + '?embedded=true';
+function toggleDetails(cardId) {
+  const card = document.getElementById(cardId);
+  if (!card) return;
+  card.classList.toggle('expanded');
+}
+
+function openFormModal(characterName, characterRole) {
+  const modal = document.getElementById('form-modal');
+  const title = document.getElementById('modal-title');
+  const iframe = document.getElementById('modal-iframe');
+
+  if (!modal || !title || !iframe) return;
+
+  title.textContent = 'Audition for ' + characterName + ' (' + characterRole + ')';
+  iframe.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true';
+
+  modal.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeFormModal(event) {
+  if (event.target !== event.currentTarget && !event.target.classList.contains('modal-close')) {
+    return;
   }
+
+  const modal = document.getElementById('form-modal');
+  const iframe = document.getElementById('modal-iframe');
+
+  if (!modal) return;
+
+  modal.classList.remove('active');
+  document.body.style.overflow = '';
+
+  setTimeout(function () {
+    if (iframe) iframe.src = '';
+  }, 300);
+}
+
+function initEscapeKey() {
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') {
+      const modal = document.getElementById('form-modal');
+      if (modal && modal.classList.contains('active')) {
+        closeFormModal({ target: modal, currentTarget: modal });
+      }
+    }
+  });
 }

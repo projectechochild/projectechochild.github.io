@@ -32,98 +32,134 @@
 
       <div class="form-cards">
         <div class="form-card" tabindex="0">
-          <h3>Cast Sign-Up Form</h3>
+          <h3>General Cast Sign-Up</h3>
           <p>Please fill out the form below. All fields are required. Your information will be collected via Google Workspace and reviewed by our casting team.</p>
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform" target="_blank" class="btn">Open Form</a>
         </div>
       </div>
 
-      <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
-        Having trouble? <a href="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform" target="_blank">Open form in new tab</a>
-      </p>
-
       <div style="margin-top: 50px;">
         <h3 style="text-align: center;">Characters</h3>
-        <p style="text-align: center; max-width: 700px; margin: 0 auto 30px; color: var(--text-secondary);">Click on a character to audition. The tile will flip and load the sign-up form.</p>
-        <div class="character-grid">
-          <div class="character-card" onclick="flipCard(this)">
-            <div class="character-card-inner">
-              <div class="character-card-front">
-                <h3>Jesse</h3>
-                <p class="character-role">The Sentimental Soul</p>
-                <p class="character-desc">At twelve years old, Jesse is the quiet heartbeat of the family. A sensitive child who navigates the world through her heart, often found clutching a faded polaroid or an old trinket. She insists on "doing the right thing," even when the world around her feels morally gray.</p>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto 30px; color: var(--text-secondary);">Click on a character name to reveal details. Click "Audition" to apply for that role.</p>
+
+        <div class="character-list">
+          <!-- Jesse -->
+          <div class="character-card" id="card-jesse">
+            <div class="character-header" onclick="toggleDetails('card-jesse')">
+              <div class="character-header-left">
+                <span class="character-num">01</span>
+                <div>
+                  <h3>Jesse</h3>
+                  <p class="character-role">The Sentimental Soul</p>
+                </div>
+              </div>
+              <div class="character-header-right">
                 <span class="character-age">Age: 12</span>
+                <span class="expand-icon">▼</span>
               </div>
-              <div class="character-card-back">
-                <h3>Audition for Jesse</h3>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true" title="Cast Sign-Up Form" class="character-form"></iframe>
-              </div>
+            </div>
+            <div class="character-details">
+              <p class="character-desc">At twelve years old, Jesse is the quiet heartbeat of the family. She is a sensitive child who navigates the world through her heart, often found clutching a faded polaroid or an old trinket that reminds her of better days. Living in the humid stretch of Louisiana, she feels the weight of her parents' fracturing relationship more than she lets on. She is the type to insist on "doing the right thing," even when the world around her feels morally gray. Her fairness and innocence contrast sharply with the darkening shadows of her home.</p>
+              <button class="btn character-audition-btn" onclick="event.stopPropagation(); openFormModal('Jesse', 'The Sentimental Soul')">Audition for Jesse</button>
             </div>
           </div>
 
-          <div class="character-card" onclick="flipCard(this)">
-            <div class="character-card-inner">
-              <div class="character-card-front">
-                <h3>Shasha</h3>
-                <p class="character-role">The Fading Mother</p>
-                <p class="character-desc">At 30, Shasha is a woman standing at 5'3" who seems to be shrinking under the weight of a heavy depression. Her hair, once vibrant, has begun to show dark, patchy spots. She spends time behind the wheel of her weathered Nissan, the engine's hum a backdrop to her silence.</p>
+          <!-- Shasha -->
+          <div class="character-card" id="card-shasha">
+            <div class="character-header" onclick="toggleDetails('card-shasha')">
+              <div class="character-header-left">
+                <span class="character-num">02</span>
+                <div>
+                  <h3>Shasha</h3>
+                  <p class="character-role">The Fading Mother</p>
+                </div>
+              </div>
+              <div class="character-header-right">
                 <span class="character-age">Age: 30</span>
+                <span class="expand-icon">▼</span>
               </div>
-              <div class="character-card-back">
-                <h3>Audition for Shasha</h3>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true" title="Cast Sign-Up Form" class="character-form"></iframe>
-              </div>
+            </div>
+            <div class="character-details">
+              <p class="character-desc">Shasha is a woman standing at 5'3" who seems to be shrinking under the weight of a heavy, unspoken depression. At 30, the vitality of her youth is being replaced by a weary grayness; her hair, once vibrant, has begun to show dark, patchy spots—perhaps a physical manifestation of her internal decay. She spends a lot of time behind the wheel of her weathered Nissan, the engine's hum a backdrop to her silence. Having built her life and motherhood in Louisiana, she now looks like a stranger in her own skin.</p>
+              <button class="btn character-audition-btn" onclick="event.stopPropagation(); openFormModal('Shasha', 'The Fading Mother')">Audition for Shasha</button>
             </div>
           </div>
 
-          <div class="character-card" onclick="flipCard(this)">
-            <div class="character-card-inner">
-              <div class="character-card-front">
-                <h3>David</h3>
-                <p class="character-role">The Restless Father</p>
-                <p class="character-desc">Standing 5'9" with a rugged, white complexion, David carries the marks of a turbulent past—a prison tattoo etched across his chest. At 30, he is a man of intense cravings; currently gripped by a primal hunger for homemade food and domestic comfort.</p>
+          <!-- David -->
+          <div class="character-card" id="card-david">
+            <div class="character-header" onclick="toggleDetails('card-david')">
+              <div class="character-header-left">
+                <span class="character-num">03</span>
+                <div>
+                  <h3>David</h3>
+                  <p class="character-role">The Restless Father</p>
+                </div>
+              </div>
+              <div class="character-header-right">
                 <span class="character-age">Age: 30</span>
+                <span class="expand-icon">▼</span>
               </div>
-              <div class="character-card-back">
-                <h3>Audition for David</h3>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true" title="Cast Sign-Up Form" class="character-form"></iframe>
-              </div>
+            </div>
+            <div class="character-details">
+              <p class="character-desc">Standing 5'9" with a rugged, white complexion, David carries the marks of a turbulent past—most notably a prison tattoo etched across his chest that serves as a permanent reminder of time served. At 30, he is a man of intense, singular cravings; currently, he is gripped by an almost primal hunger for homemade food, a yearning for the domestic comfort he likely lacked for years. Though he is Jesse's father, there is a lingering edge to him that suggests he is still trying to figure out how to be a "home" for anyone.</p>
+              <button class="btn character-audition-btn" onclick="event.stopPropagation(); openFormModal('David', 'The Restless Father')">Audition for David</button>
             </div>
           </div>
 
-          <div class="character-card" onclick="flipCard(this)">
-            <div class="character-card-inner">
-              <div class="character-card-front">
-                <h3>The Woman with the Veil</h3>
-                <p class="character-role">The Mourning Daughter</p>
-                <p class="character-desc">Though only 30, grief has aged her like a decade of hard winters. Daughter of a legendary fighter, she carries herself with gentle, fragile grace. Having lost her own daughter, she hides behind a veil—a barrier between her sorrow and the world.</p>
+          <!-- The Woman with the Veil -->
+          <div class="character-card" id="card-veil">
+            <div class="character-header" onclick="toggleDetails('card-veil')">
+              <div class="character-header-left">
+                <span class="character-num">04</span>
+                <div>
+                  <h3>The Woman with the Veil</h3>
+                  <p class="character-role">The Mourning Daughter</p>
+                </div>
+              </div>
+              <div class="character-header-right">
                 <span class="character-age">Age: 30</span>
+                <span class="expand-icon">▼</span>
               </div>
-              <div class="character-card-back">
-                <h3>Audition for The Woman with the Veil</h3>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true" title="Cast Sign-Up Form" class="character-form"></iframe>
-              </div>
+            </div>
+            <div class="character-details">
+              <p class="character-desc">Though she is only 30, grief has aged her like a decade of hard winters. The daughter of a legendary fighter, she carries herself with a gentle, fragile grace that seems at odds with her father's violent legacy. Having recently lost her own daughter, she hides her face behind a veil, creating a barrier between her sorrow and the world. She is a portrait of profound loss—soft-spoken and ethereal, yet anchored by a pain that makes her look much older than the woman Shasha used to know.</p>
+              <button class="btn character-audition-btn" onclick="event.stopPropagation(); openFormModal('The Woman with the Veil', 'The Mourning Daughter')">Audition for The Woman with the Veil</button>
             </div>
           </div>
 
-          <div class="character-card" onclick="flipCard(this)">
-            <div class="character-card-inner">
-              <div class="character-card-front">
-                <h3>Tom "The Beast" Wilmington</h3>
-                <p class="character-role">The Departed Legend</p>
-                <p class="character-desc">Known as the "Iron Fist of Louisiana," Tom was a titan of the boxing ring whose presence was once deafening. Though he passed away months ago, his absence is louder than his life. His bedroom remains a shrine—white-sheeted furniture, dust, and old leather. Something lingers in that room.</p>
+          <!-- Tom "The Beast" Wilmington -->
+          <div class="character-card" id="card-tom">
+            <div class="character-header" onclick="toggleDetails('card-tom')">
+              <div class="character-header-left">
+                <span class="character-num">05</span>
+                <div>
+                  <h3>Tom "The Beast" Wilmington</h3>
+                  <p class="character-role">The Departed Legend</p>
+                </div>
+              </div>
+              <div class="character-header-right">
                 <span class="character-age">Age: 30 (flashbacks)</span>
+                <span class="expand-icon">▼</span>
               </div>
-              <div class="character-card-back">
-                <h3>Audition for Tom</h3>
-                <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true" title="Cast Sign-Up Form" class="character-form"></iframe>
-              </div>
+            </div>
+            <div class="character-details">
+              <p class="character-desc">Known in every corner of the state as the "Iron Fist of Louisiana," Tom was a titan of the boxing ring whose presence was once deafening. Though he passed away a few months ago, his absence is louder than his life. His bedroom remains a shrine of white-sheeted furniture, smelling of dust and old leather. However, there is a heavy, static energy left behind in that room. Among the covered chairs and shadows, something lingers—something that hasn't realized the legend is dead, and it certainly isn't made of fabric.</p>
+              <button class="btn character-audition-btn" onclick="event.stopPropagation(); openFormModal('Tom', 'The Departed Legend')">Audition for Tom</button>
             </div>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Modal Popup for Google Form -->
+  <div id="form-modal" class="modal-overlay" onclick="closeFormModal(event)">
+    <div class="modal-content">
+      <button class="modal-close" onclick="closeFormModal(event)">✕</button>
+      <h3 id="modal-title">Audition Form</h3>
+      <iframe id="modal-iframe" class="modal-form" src="" title="Cast Sign-Up Form"></iframe>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
