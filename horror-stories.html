@@ -3,64 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Horror Stories - Echo Child</title>
+  <title>Horror Stories — Echo Child</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header{padding:110px 0 50px;text-align:center;border-bottom:1px solid var(--border);margin-bottom:60px;}
+    .page-header::before{content:'FILE: WITNESS_TESTIMONIES.EXE';display:block;font-family:var(--font-mono);font-size:0.65rem;color:var(--green-bright);letter-spacing:0.2em;margin-bottom:14px;opacity:0.7;}
+    .page-header p{font-family:var(--font-mono);font-size:0.78rem;color:var(--text-mid);max-width:600px;margin:12px auto 0;letter-spacing:0.04em;}
+    .warning-box{border:1px solid var(--blood);background:rgba(139,0,0,0.06);padding:16px 20px;font-family:var(--font-mono);font-size:0.72rem;color:var(--crimson);letter-spacing:0.06em;margin-bottom:40px;text-align:center;}
+  </style>
 </head>
 <body>
   <header>
     <div class="container header-inner">
       <div class="logo">Echo Child</div>
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="cast.html">Cast</a></li>
-          <li><a href="locations.html">Locations</a></li>
-          <li><a href="behind-scenes.html">BTS</a></li>
-          <li><a href="horror-stories.html" class="active">Horror Stories</a></li>
-          <li><a href="comics.html">Comics</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
+      <nav><ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="cast.html">Cast</a></li>
+        <li><a href="locations.html">Locations</a></li>
+        <li><a href="behind-scenes.html">BTS</a></li>
+        <li><a href="horror-stories.html" class="active">Horror Stories</a></li>
+        <li><a href="comics.html">Comics</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul></nav>
     </div>
   </header>
 
   <section class="page-content">
     <div class="container">
-      <h2>Horror Stories</h2>
-      <p style="text-align: center; max-width: 700px; margin: 0 auto 40px;">Echo Child explores the shadows that linger in forgotten places. Share your own horror stories — encounters with the unknown, eerie coincidences, or chilling experiences that still haunt you.</p>
+      <div class="page-header">
+        <h2>Horror Stories</h2>
+        <p>Echo Child explores the shadows that linger in forgotten places. Share your own encounters with the unknown, eerie coincidences, or experiences that still haunt you.</p>
+      </div>
+
+      <div class="warning-box">⚠ CONTENT ADVISORY — ALL SUBMISSIONS ARE REVIEWED. REAL NAMES OF NON-PUBLIC FIGURES MUST BE OMITTED.</div>
 
       <div class="form-cards">
-        <div class="form-card" tabindex="0">
-          <h3>Horror Stories Submission Form</h3>
-          <p>Your story may be featured on our social media or website (with credit). All submissions are reviewed before being shared. Please keep content appropriate and avoid real names of non-public figures.</p>
-          <a href="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_HORROR_STORIES_FORM_ID/viewform" target="_blank" class="btn">Open Form</a>
+        <div class="form-card">
+          <h3>Horror Story Submission</h3>
+          <p>Your story may be featured on our social media or website (with credit). Please keep content appropriate and avoid real names of non-public figures.</p>
+          <a href="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_HORROR_STORIES_FORM_ID/viewform" target="_blank" class="btn">Submit Your Story</a>
         </div>
       </div>
 
-      <p style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
-        Having trouble? <a href="https://docs.google.com/forms/d/e/REPLACE_WITH_YOUR_HORROR_STORIES_FORM_ID/viewform" target="_blank">Open form in new tab</a>
-      </p>
-
-      <div style="margin-top: 50px;">
-        <h3 style="text-align: center;">What We're Looking For</h3>
-        <div class="grid" style="margin-top: 20px;">
-          <div class="card">
-            <h3>Real Encounters</h3>
-            <p>True stories of unexplained phenomena, ghostly encounters, or moments that defied explanation.</p>
-          </div>
-          <div class="card">
-            <h3>Childhood Fears</h3>
-            <p>Those irrational but terrifying fears from childhood that still echo into adulthood.</p>
-          </div>
-          <div class="card">
-            <h3>Location-Based</h3>
-            <p>Stories tied to specific places — houses, schools, forests — where something felt deeply wrong.</p>
-          </div>
-          <div class="card">
-            <h3>Echoes of the Past</h3>
-            <p>Stories about how the past seems to repeat itself or leave traces in the present.</p>
-          </div>
+      <div style="margin-top:60px;">
+        <h3 style="text-align:center; margin-bottom:24px;">What We're Looking For</h3>
+        <div class="grid">
+          <div class="card"><h3>Real Encounters</h3><p>True stories of unexplained phenomena, ghostly encounters, or moments that defied explanation.</p></div>
+          <div class="card"><h3>Childhood Fears</h3><p>Those irrational but terrifying fears from childhood that still echo into adulthood.</p></div>
+          <div class="card"><h3>Location-Based</h3><p>Stories tied to specific places — houses, schools, forests — where something felt deeply wrong.</p></div>
+          <div class="card"><h3>Echoes of the Past</h3><p>Stories about how the past seems to repeat itself or leave traces in the present.</p></div>
         </div>
       </div>
     </div>
@@ -69,14 +61,9 @@
   <footer>
     <div class="container">
       <p>&copy; 2026 Echo Child. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" title="Instagram">Instagram</a>
-        <a href="#" title="YouTube">YouTube</a>
-        <a href="#" title="Email">Email</a>
-      </div>
+      <div class="social-links"><a href="#">Instagram</a><a href="#">YouTube</a><a href="#">Email</a></div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>

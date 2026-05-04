@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About - Echo Child</title>
+  <title>About — Echo Child</title>
   <link rel="stylesheet" href="css/style.css">
+  <style>
+    .page-header { padding:110px 0 50px; text-align:center; border-bottom:1px solid var(--border); margin-bottom:60px; }
+    .page-header::before { content:'FILE: PROJECT_OVERVIEW.EXE'; display:block; font-family:var(--font-mono); font-size:0.65rem; color:var(--green-bright); letter-spacing:0.2em; margin-bottom:14px; opacity:0.7; }
+    .synopsis-text { color:var(--text-body); font-size:1.05rem; line-height:1.85; }
+    .director-quote { border-left:2px solid var(--blood-bright); padding-left:24px; margin:0; font-style:italic; color:var(--text-bright); font-size:1.1rem; }
+    .contact-section { margin-top:50px; text-align:center; padding:40px; background:var(--panel); border:1px solid var(--border); border-top:2px solid var(--blood); }
+  </style>
 </head>
 <body>
   <header>
@@ -27,25 +34,29 @@
 
   <section class="page-content">
     <div class="container">
-      <h2>About Echo Child</h2>
+      <div class="page-header">
+        <h2>About Echo Child</h2>
+      </div>
 
       <div class="about-content">
-        <div class="card" style="margin-bottom: 30px;">
+        <div class="card" style="margin-bottom:30px;">
           <h3>Synopsis</h3>
-          <p style="color: #fff; font-weight: 700; text-shadow: 0 0 10px rgba(233, 69, 96, 0.8), 2px 2px 0 var(--accent-blood); animation: titleGlitch 4s infinite;">In a torrential Louisiana rainstorm, Shasha drives with her twelve years old daughter Jesse and her husband David after a pick up on the road. A falling tree blocks the road, forcing the family to shelter in the isolated home of the late boxing champion Tom Wilmington. Inside, horrors erupt — the reanimated corpse of Tom attacks with a sledgehammer, and a disturbing dollhouse holds dark secrets. All horrors lead back to a meat freezer that safe guarded by the daughter of Wilmington who lost her daughter not so long ago. While a mysterious government spy is taken shelter near by to seek a lost government project called Echo Child at any cost.</p>
+          <p class="synopsis-text">In a torrential Louisiana rainstorm, Shasha drives with her twelve-year-old daughter Jesse and husband David after a pick-up on the road. A falling tree blocks their path, forcing the family to shelter in the isolated home of the late boxing champion Tom Wilmington. Inside, horrors erupt — the reanimated corpse of Tom attacks with a sledgehammer, and a disturbing dollhouse holds dark secrets. All horrors lead back to a meat freezer safeguarded by Wilmington's daughter, who lost her own child not long ago. Meanwhile, a mysterious government operative takes shelter nearby — hunting a lost classified project known only as Echo Child, at any cost.</p>
         </div>
 
-        <h3>Director's Statement</h3>
-        <div class="card" style="margin-bottom: 30px;">
-          <p>"Echo Child is born from my own fascination with how places hold onto our memories — sometimes tighter than we hold onto them ourselves. I wanted to create a film that doesn't rely on jump scares, but instead builds a lingering sense of dread that stays with the viewer long after the credits roll."</p>
-          <p style="text-align: right; color: var(--accent); font-style: italic;">— Director, Echo Child</p>
+        <h3 style="margin-bottom:16px;">Director's Statement</h3>
+        <div class="card" style="margin-bottom:30px;">
+          <blockquote class="director-quote">
+            "Echo Child is born from my own fascination with how places hold onto our memories — sometimes tighter than we hold onto them ourselves. I wanted to create a film that doesn't rely on jump scares, but instead builds a lingering sense of dread that stays with the viewer long after the credits roll."
+          </blockquote>
+          <p style="text-align:right; color:var(--crimson); font-style:italic; margin-top:16px; font-family:var(--font-mono); font-size:0.75rem;">— Director, Echo Child</p>
         </div>
 
-        <h3>Film Details</h3>
-        <div class="grid" style="margin-top: 20px; margin-bottom: 30px;">
+        <h3 style="margin-bottom:20px;">Film Details</h3>
+        <div class="grid" style="margin-bottom:40px;">
           <div class="card">
             <h3>Format</h3>
-            <p>Short Film<br>Estimated Runtime: 15-20 minutes<br>Aspect Ratio: 2.39:1</p>
+            <p>Short Film<br>Runtime: 15–20 minutes<br>Aspect Ratio: 2.39:1</p>
           </div>
           <div class="card">
             <h3>Genre</h3>
@@ -57,38 +68,20 @@
           </div>
         </div>
 
-        <h3>Key Crew</h3>
+        <h3 style="margin-bottom:20px;">Key Crew</h3>
         <div class="crew-list">
-          <div class="crew-member">
-            <h4>Director</h4>
-            <p>[Name]</p>
-          </div>
-          <div class="crew-member">
-            <h4>Producer</h4>
-            <p>[Name]</p>
-          </div>
-          <div class="crew-member">
-            <h4>Writer</h4>
-            <p>[Name]</p>
-          </div>
-          <div class="crew-member">
-            <h4>Cinematographer</h4>
-            <p>[Open Position]</p>
-          </div>
-          <div class="crew-member">
-            <h4>Sound Designer</h4>
-            <p>[Open Position]</p>
-          </div>
-          <div class="crew-member">
-            <h4>Editor</h4>
-            <p>[Open Position]</p>
-          </div>
+          <div class="crew-member"><h4>Director</h4><p>[Name]</p></div>
+          <div class="crew-member"><h4>Producer</h4><p>[Name]</p></div>
+          <div class="crew-member"><h4>Writer</h4><p>[Name]</p></div>
+          <div class="crew-member"><h4>Cinematographer</h4><p>[Open Position]</p></div>
+          <div class="crew-member"><h4>Sound Designer</h4><p>[Open Position]</p></div>
+          <div class="crew-member"><h4>Editor</h4><p>[Open Position]</p></div>
         </div>
 
-        <div style="margin-top: 40px; text-align: center;">
+        <div class="contact-section">
           <h3>Get in Touch</h3>
-          <p style="max-width: 600px; margin: 15px auto 20px;">Interested in getting involved or learning more about Echo Child? Reach out to us directly.</p>
-          <p style="margin-bottom: 20px;">
+          <p style="max-width:600px; margin:15px auto 20px; color:var(--text-body);">Interested in getting involved or learning more about Echo Child? Reach out directly.</p>
+          <p style="font-family:var(--font-mono); font-size:0.8rem; color:var(--text-mid); margin-bottom:20px;">
             Email: <a href="mailto:echochildfilm@example.com">echochildfilm@example.com</a><br>
             Instagram: <a href="#">@echochildfilm</a>
           </p>
@@ -102,13 +95,12 @@
     <div class="container">
       <p>&copy; 2026 Echo Child. All rights reserved.</p>
       <div class="social-links">
-        <a href="#" title="Instagram">Instagram</a>
-        <a href="#" title="YouTube">YouTube</a>
-        <a href="#" title="Email">Email</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
+        <a href="#">Email</a>
       </div>
     </div>
   </footer>
-
   <script src="js/main.js"></script>
 </body>
 </html>

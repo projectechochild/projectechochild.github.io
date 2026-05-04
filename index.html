@@ -3,99 +3,451 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Echo Child - Short Film</title>
+  <title>Echo Child — Short Film</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Initial state: hide page content until intro completes */
-    body.loading .page-wrapper {
-      opacity: 0;
+    body.loading .page-wrapper { opacity: 0; pointer-events: none; }
+
+    /* ---- HOUSE SVG SCENE ---- */
+    .house-svg-wrap {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 75vh;
       pointer-events: none;
     }
+
+    .house-svg-wrap svg {
+      width: 100%;
+      height: 100%;
+    }
+
+    /* Window flicker animations */
+    .win-flicker-1 { animation: wf1 5s ease-in-out infinite; }
+    .win-flicker-2 { animation: wf2 7s ease-in-out infinite; }
+    .win-flicker-3 { animation: wf3 3.5s ease-in-out infinite; }
+    .win-flicker-door { animation: wfd 11s ease-in-out infinite; }
+
+    @keyframes wf1 {
+      0%,100%{opacity:0.04} 3%{opacity:0.65} 4%{opacity:0.05} 5%{opacity:0.55}
+      20%{opacity:0.05} 40%{opacity:0.4} 70%{opacity:0.06} 80%{opacity:0.5} 82%{opacity:0.05}
+    }
+    @keyframes wf2 {
+      0%,100%{opacity:0.06} 10%{opacity:0.5} 12%{opacity:0.04} 50%{opacity:0.3}
+      55%{opacity:0.05} 75%{opacity:0.45} 90%{opacity:0.06}
+    }
+    @keyframes wf3 {
+      0%,100%{opacity:0.08} 5%{opacity:0.7} 6%{opacity:0.04} 30%{opacity:0.2}
+      35%{opacity:0.04} 60%{opacity:0.55} 90%{opacity:0.06}
+    }
+    @keyframes wfd {
+      0%,100%{opacity:0} 20%{opacity:0.08} 40%{opacity:0.04} 60%{opacity:0.12}
+    }
+
+    /* Animated bat */
+    .bat-group { animation: batFly 14s ease-in-out infinite; transform-origin: center; }
+    @keyframes batFly {
+      0%   { transform: translate(-200px, 80px) scaleX(-1); opacity:0; }
+      5%   { opacity:1; }
+      50%  { transform: translate(300px, -40px) scaleX(1); }
+      95%  { opacity:1; }
+      100% { transform: translate(900px, 60px) scaleX(1); opacity:0; }
+    }
+
+    /* Raven on chimney */
+    .raven { animation: ravenBob 4s ease-in-out infinite; transform-origin: bottom center; }
+    @keyframes ravenBob {
+      0%,100%{transform:translateY(0) rotate(-2deg)} 50%{transform:translateY(-3px) rotate(1deg)}
+    }
+
+    /* Lightning flash */
+    .lightning-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(200,200,255,0.0);
+      pointer-events: none;
+      animation: lightning 15s infinite;
+    }
+    @keyframes lightning {
+      0%,100%{opacity:0}
+      10%{opacity:0} 10.1%{opacity:0.15} 10.2%{opacity:0} 10.4%{opacity:0.2}
+      10.5%{opacity:0} 40%{opacity:0} 40.1%{opacity:0.08} 40.2%{opacity:0}
+    }
+
+    /* Hero content offset for house */
+    .hero .container { padding-top: 80px; }
+
+    /* Tagline typewriter */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid var(--crimson);
+      animation: typewrite 3.5s steps(60,end) 2.8s both, blink 0.75s step-end infinite 2.8s;
+      max-width: fit-content;
+      margin: 0 auto 36px;
+    }
+
+    @keyframes typewrite {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes blink {
+      0%,100% { border-color: var(--crimson); }
+      50%     { border-color: transparent; }
+    }
+
+    /* Classified stamp effect */
+    .classified-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.3em;
+      border: 2px solid var(--blood-bright);
+      color: var(--blood-bright);
+      padding: 3px 10px;
+      transform: rotate(-8deg);
+      margin-bottom: 20px;
+      opacity: 0.7;
+      text-transform: uppercase;
+    }
+
+    .hero-ctas { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
   </style>
 </head>
 <body class="loading">
-  <!-- Intro Loader -->
+
+  <!-- INTRO LOADER -->
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
-      <img src="assets/images/echochild.jpg" alt="Echo Child" class="intro-image">
+      <img src="assets/images/echochild.jpg" alt="Echo Child"
+           class="intro-image"
+           onerror="this.style.display='none'">
       <h1 class="intro-title">Echo Child</h1>
-  </div>
-</div>
-
-<header>
-  <div class="container header-inner">
-    <div class="logo">Echo Child</div>
-    <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
-    <nav>
-      <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="cast.html">Cast</a></li>
-        <li><a href="locations.html">Locations</a></li>
-        <li><a href="behind-scenes.html">BTS</a></li>
-        <li><a href="horror-stories.html">Horror Stories</a></li>
-        <li><a href="comics.html">Comics</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<div class="page-wrapper">
-
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="container">
-      <h1>Echo Child</h1>
-      <p>A haunting short film that explores the echoes of the past and the shadows they cast on the present. Join us in bringing this vision to life.</p>
-      <a href="cast.html" class="btn">Join the Cast</a>
-      <a href="about.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
     </div>
-  </section>
+  </div>
 
-  <section class="page-content">
-    <div class="container">
-      <h2>Be Part of the Story</h2>
-      <div class="grid">
-        <div class="card">
-          <h3>Join the Cast</h3>
-          <p>We're looking for passionate actors and crew members to bring Echo Child to life. All experience levels welcome.</p>
-          <a href="cast.html" class="btn">Sign Up</a>
+  <header>
+    <div class="container header-inner">
+      <div class="logo">Echo Child</div>
+      <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="index.html" class="active">Home</a></li>
+          <li><a href="cast.html">Cast</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="behind-scenes.html">BTS</a></li>
+          <li><a href="horror-stories.html">Horror Stories</a></li>
+          <li><a href="comics.html">Comics</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-wrapper">
+
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-stars"></div>
+      <div class="lightning-overlay"></div>
+
+      <!-- ABANDONED HOUSE SCENE -->
+      <div class="house-svg-wrap">
+        <svg viewBox="0 0 1400 600" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+          <defs>
+            <radialGradient id="moonGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8b050" stop-opacity="0.25"/>
+              <stop offset="100%" stop-color="#c8b050" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="winGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c87820" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#803010" stop-opacity="0.4"/>
+            </radialGradient>
+            <radialGradient id="winGlowGreen" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#103520" stop-opacity="1"/>
+              <stop offset="100%" stop-color="#051208" stop-opacity="0.3"/>
+            </radialGradient>
+            <filter id="blur3">
+              <feGaussianBlur stdDeviation="3"/>
+            </filter>
+            <filter id="blur6">
+              <feGaussianBlur stdDeviation="6"/>
+            </filter>
+          </defs>
+
+          <!-- Ground -->
+          <rect x="0" y="520" width="1400" height="80" fill="#060608"/>
+          <rect x="0" y="515" width="1400" height="10" fill="#0a0a0e"/>
+
+          <!-- Far trees (left) -->
+          <g fill="#030306">
+            <polygon points="80,520 100,380 120,520"/>
+            <polygon points="90,520 112,340 134,520"/>
+            <polygon points="110,520 138,360 165,520"/>
+            <polygon points="30,520 52,400 75,520"/>
+            <polygon points="150,520 168,420 186,520"/>
+            <polygon points="160,520 185,360 210,520"/>
+          </g>
+
+          <!-- Far trees (right) -->
+          <g fill="#030306">
+            <polygon points="1220,520 1240,380 1260,520"/>
+            <polygon points="1240,520 1265,340 1290,520"/>
+            <polygon points="1270,520 1298,360 1325,520"/>
+            <polygon points="1310,520 1330,400 1350,520"/>
+            <polygon points="1340,520 1365,420 1390,520"/>
+          </g>
+
+          <!-- Mid trees flanking house -->
+          <g fill="#040408">
+            <polygon points="350,520 378,310 406,520"/>
+            <polygon points="330,520 362,280 394,520"/>
+            <polygon points="370,520 405,330 440,520"/>
+            <polygon points="960,520 988,310 1016,520"/>
+            <polygon points="990,520 1022,280 1054,520"/>
+            <polygon points="1020,520 1055,330 1090,520"/>
+          </g>
+
+          <!-- Moon glow halo (behind house) -->
+          <ellipse cx="700" cy="180" rx="200" ry="120" fill="url(#moonGlow)" filter="url(#blur6)" opacity="0.5"/>
+
+          <!-- ============================================
+               MAIN HOUSE — VICTORIAN/ABANDONED
+               ============================================ -->
+
+          <!-- Main house body -->
+          <rect x="430" y="260" width="540" height="260" fill="#08080c"/>
+          <!-- House outline -->
+          <rect x="430" y="260" width="540" height="260" fill="none" stroke="#1a1a25" stroke-width="1.5"/>
+
+          <!-- Foundation/porch base -->
+          <rect x="415" y="495" width="570" height="25" fill="#0a0a10"/>
+          <rect x="415" y="490" width="570" height="8" fill="#0d0d14"/>
+
+          <!-- Main roof -->
+          <polygon points="400,265 700,100 1000,265" fill="#060608"/>
+          <polygon points="400,265 700,100 1000,265" fill="none" stroke="#15151e" stroke-width="1.5"/>
+
+          <!-- Roof ridge decoration -->
+          <line x1="700" y1="100" x2="700" y2="80" stroke="#10101a" stroke-width="2"/>
+          <circle cx="700" cy="76" r="6" fill="#0d0d14"/>
+
+          <!-- Left dormer -->
+          <polygon points="510,265 560,200 610,265" fill="#07070b"/>
+          <polygon points="510,265 560,200 610,265" fill="none" stroke="#141420" stroke-width="1"/>
+          <rect x="530" y="235" width="60" height="30" fill="#0c0c12"/>
+          <!-- Dormer window -->
+          <rect x="540" y="218" width="40" height="40" fill="#0f0f18"/>
+          <!-- Window flicker 1 -->
+          <rect x="540" y="218" width="40" height="40" fill="url(#winGlow)" class="win-flicker-1"/>
+          <rect x="540" y="218" width="40" height="40" fill="none" stroke="#1a1a28" stroke-width="1"/>
+          <line x1="560" y1="218" x2="560" y2="258" stroke="#14141e" stroke-width="1"/>
+          <line x1="540" y1="238" x2="580" y2="238" stroke="#14141e" stroke-width="1"/>
+
+          <!-- Right dormer -->
+          <polygon points="790,265 840,200 890,265" fill="#07070b"/>
+          <polygon points="790,265 840,200 890,265" fill="none" stroke="#141420" stroke-width="1"/>
+          <rect x="810" y="235" width="60" height="30" fill="#0c0c12"/>
+          <rect x="820" y="218" width="40" height="40" fill="#0f0f18"/>
+          <rect x="820" y="218" width="40" height="40" fill="url(#winGlowGreen)" class="win-flicker-2"/>
+          <rect x="820" y="218" width="40" height="40" fill="none" stroke="#1a1a28" stroke-width="1"/>
+          <line x1="840" y1="218" x2="840" y2="258" stroke="#14141e" stroke-width="1"/>
+          <line x1="820" y1="238" x2="860" y2="238" stroke="#14141e" stroke-width="1"/>
+
+          <!-- Chimney left -->
+          <rect x="490" y="90" width="40" height="90" fill="#07070a"/>
+          <rect x="486" y="80" width="48" height="14" fill="#0a0a0e"/>
+          <!-- Chimney smoke (subtle) -->
+          <ellipse cx="510" cy="72" rx="8" ry="5" fill="#0d0d12" opacity="0.4"/>
+          <ellipse cx="513" cy="60" rx="10" ry="7" fill="#0a0a0f" opacity="0.3"/>
+
+          <!-- Chimney right -->
+          <rect x="870" y="95" width="35" height="80" fill="#07070a"/>
+          <rect x="866" y="85" width="43" height="14" fill="#0a0a0e"/>
+
+          <!-- RAVEN on left chimney -->
+          <g class="raven" transform="translate(504, 68)">
+            <ellipse cx="0" cy="0" rx="9" ry="6" fill="#04040a"/>
+            <ellipse cx="12" cy="-2" rx="6" ry="5" fill="#060610"/>
+            <polygon points="17,-4 22,-2 17,0" fill="#04040a"/>
+            <line x1="-2" y1="6" x2="-4" y2="14" stroke="#04040a" stroke-width="1.5"/>
+            <line x1="2" y1="6" x2="4" y2="14" stroke="#04040a" stroke-width="1.5"/>
+          </g>
+
+          <!-- Ground floor windows (left) -->
+          <rect x="450" y="310" width="90" height="110" fill="#0a0a10"/>
+          <rect x="450" y="310" width="90" height="110" fill="url(#winGlow)" class="win-flicker-3"/>
+          <rect x="450" y="310" width="90" height="110" fill="none" stroke="#1e1e2a" stroke-width="1.5"/>
+          <line x1="495" y1="310" x2="495" y2="420" stroke="#15151f" stroke-width="1"/>
+          <line x1="450" y1="365" x2="540" y2="365" stroke="#15151f" stroke-width="1"/>
+          <!-- Broken pane suggestion -->
+          <polygon points="460,315 480,335 460,335" fill="#080810" opacity="0.6"/>
+
+          <!-- Ground floor windows (right) -->
+          <rect x="860" y="310" width="90" height="110" fill="#0a0a10"/>
+          <rect x="860" y="310" width="90" height="110" fill="url(#winGlowGreen)" class="win-flicker-1"/>
+          <rect x="860" y="310" width="90" height="110" fill="none" stroke="#1e1e2a" stroke-width="1.5"/>
+          <line x1="905" y1="310" x2="905" y2="420" stroke="#15151f" stroke-width="1"/>
+          <line x1="860" y1="365" x2="950" y2="365" stroke="#15151f" stroke-width="1"/>
+
+          <!-- Upper floor windows -->
+          <rect x="490" y="280" width="70" height="80" fill="#090910"/>
+          <rect x="490" y="280" width="70" height="80" fill="none" stroke="#1a1a26" stroke-width="1"/>
+          <line x1="525" y1="280" x2="525" y2="360" stroke="#141420" stroke-width="1"/>
+          <line x1="490" y1="320" x2="560" y2="320" stroke="#141420" stroke-width="1"/>
+
+          <rect x="840" y="280" width="70" height="80" fill="#090910"/>
+          <rect x="840" y="280" width="70" height="80" fill="none" stroke="#1a1a26" stroke-width="1"/>
+          <line x1="875" y1="280" x2="875" y2="360" stroke="#141420" stroke-width="1"/>
+          <line x1="840" y1="320" x2="910" y2="320" stroke="#141420" stroke-width="1"/>
+
+          <!-- CENTER DOOR -->
+          <rect x="638" y="390" width="124" height="130" fill="#070710" rx="4"/>
+          <!-- Door frame -->
+          <rect x="634" y="386" width="132" height="134" fill="none" stroke="#1e1e2a" stroke-width="2" rx="3"/>
+          <!-- Door arch top -->
+          <path d="M638,390 Q700,360 762,390" fill="#090912" stroke="#1e1e2a" stroke-width="1.5"/>
+          <!-- Door panels -->
+          <rect x="645" y="400" width="50" height="50" fill="#0b0b14" stroke="#18182a" stroke-width="1" rx="1"/>
+          <rect x="705" y="400" width="50" height="50" fill="#0b0b14" stroke="#18182a" stroke-width="1" rx="1"/>
+          <rect x="645" y="460" width="50" height="55" fill="#0b0b14" stroke="#18182a" stroke-width="1" rx="1"/>
+          <rect x="705" y="460" width="50" height="55" fill="#0b0b14" stroke="#18182a" stroke-width="1" rx="1"/>
+          <!-- Door knob -->
+          <circle cx="740" cy="462" r="5" fill="#15151f"/>
+          <circle cx="740" cy="462" r="3" fill="#1e1e2a"/>
+          <!-- Door light (very faint) -->
+          <rect x="638" y="390" width="124" height="130" fill="url(#winGlow)" class="win-flicker-door"/>
+
+          <!-- Porch columns -->
+          <rect x="590" y="430" width="16" height="90" fill="#090910"/>
+          <rect x="794" y="430" width="16" height="90" fill="#090910"/>
+          <rect x="580" y="425" width="36" height="10" fill="#0c0c14"/>
+          <rect x="784" y="425" width="36" height="10" fill="#0c0c14"/>
+
+          <!-- Porch steps -->
+          <rect x="610" y="495" width="180" height="10" fill="#0b0b12"/>
+          <rect x="620" y="505" width="160" height="10" fill="#0d0d14"/>
+          <rect x="630" y="515" width="140" height="8" fill="#0f0f16"/>
+
+          <!-- Dead tree (far left) -->
+          <g stroke="#040407" stroke-width="2.5" fill="none">
+            <line x1="220" y1="520" x2="260" y2="340"/>
+            <line x1="260" y1="340" x2="240" y2="280"/>
+            <line x1="260" y1="340" x2="285" y2="310"/>
+            <line x1="240" y1="280" x2="225" y2="240"/>
+            <line x1="240" y1="280" x2="255" y2="250"/>
+            <line x1="225" y1="240" x2="215" y2="215"/>
+            <line x1="225" y1="240" x2="230" y2="220"/>
+            <line x1="285" y1="310" x2="295" y2="285"/>
+            <line x1="285" y1="310" x2="310" y2="295"/>
+          </g>
+
+          <!-- Dead tree (far right) -->
+          <g stroke="#040407" stroke-width="2.5" fill="none">
+            <line x1="1180" y1="520" x2="1140" y2="340"/>
+            <line x1="1140" y1="340" x2="1160" y2="280"/>
+            <line x1="1140" y1="340" x2="1115" y2="310"/>
+            <line x1="1160" y1="280" x2="1175" y2="240"/>
+            <line x1="1160" y1="280" x2="1145" y2="250"/>
+            <line x1="1175" y1="240" x2="1185" y2="215"/>
+            <line x1="1175" y1="240" x2="1170" y2="220"/>
+            <line x1="1115" y1="310" x2="1105" y2="285"/>
+            <line x1="1115" y1="310" x2="1090" y2="295"/>
+          </g>
+
+          <!-- Overgrown fence -->
+          <g stroke="#0d0d14" stroke-width="1" fill="none">
+            <line x1="415" y1="490" x2="415" y2="520"/>
+            <line x1="430" y1="487" x2="430" y2="520"/>
+            <line x1="445" y1="489" x2="445" y2="520"/>
+            <line x1="460" y1="486" x2="460" y2="520"/>
+            <line x1="940" y1="490" x2="940" y2="520"/>
+            <line x1="955" y1="487" x2="955" y2="520"/>
+            <line x1="970" y1="489" x2="970" y2="520"/>
+            <line x1="985" y1="486" x2="985" y2="520"/>
+          </g>
+
+          <!-- Ground mist / fog -->
+          <ellipse cx="700" cy="520" rx="700" ry="35" fill="#08080e" opacity="0.7"/>
+          <ellipse cx="500" cy="520" rx="300" ry="20" fill="#0a0a12" opacity="0.5"/>
+          <ellipse cx="900" cy="520" rx="250" ry="18" fill="#090910" opacity="0.4"/>
+
+          <!-- BAT -->
+          <g class="bat-group">
+            <ellipse cx="200" cy="100" rx="8" ry="5" fill="#060610"/>
+            <path d="M192,100 Q185,92 175,96 Q185,100 192,104Z" fill="#060610"/>
+            <path d="M208,100 Q215,92 225,96 Q215,100 208,104Z" fill="#060610"/>
+          </g>
+
+        </svg>
+      </div>
+
+      <div class="hero-fog"></div>
+
+      <div class="container">
+        <div style="margin-bottom:12px;">
+          <span class="classified-badge">⚠ Classified — Project Echo Child</span>
         </div>
-        <div class="card">
-          <h3>Find Locations</h3>
-          <p>Help us find the perfect settings for our scenes. Urban, rural, or somewhere in between — we need your suggestions.</p>
-          <a href="locations.html" class="btn">View Locations</a>
-        </div>
-        <div class="card">
-          <h3>Behind the Scenes</h3>
-          <p>Get an exclusive look at the making of Echo Child. Photos and videos from our journey.</p>
-          <a href="behind-scenes.html" class="btn">View Gallery</a>
-        </div>
-        <div class="card">
-          <h3>Horror Stories</h3>
-          <p>Share your own horror stories inspired by the film's themes. The best ones may be featured!</p>
-          <a href="horror-stories.html" class="btn">Submit Story</a>
-        </div>
-        <div class="card">
-          <h3>Comics</h3>
-          <p>Explore our Instagram comic series expanding the Echo Child universe. Visual stories that haunt.</p>
-          <a href="comics.html" class="btn">View Comics</a>
+        <h1>Echo Child</h1>
+        <p class="typewriter">A haunting short film set in the shadows of Louisiana.</p>
+        <div class="hero-ctas">
+          <a href="cast.html" class="btn">Join the Cast</a>
+          <a href="about.html" class="btn btn-outline">Enter the House</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Echo Child. All rights reserved.</p>
-      <div class="social-links">
-        <a href="#" title="Instagram">Instagram</a>
-        <a href="#" title="YouTube">YouTube</a>
-        <a href="#" title="Email">Email</a>
-      </div>
+    <!-- DATA TICKER -->
+    <div class="data-ticker">
+      <div class="ticker-track"></div>
     </div>
-  </footer>
-  </div>
+
+    <section class="page-content">
+      <div class="container">
+        <h2>Be Part of the Story</h2>
+        <div class="grid">
+          <div class="card">
+            <h3>Join the Cast</h3>
+            <p>We're looking for passionate actors and crew members to bring Echo Child to life. All experience levels welcome.</p>
+            <a href="cast.html" class="btn">Sign Up</a>
+          </div>
+          <div class="card">
+            <h3>Find Locations</h3>
+            <p>Help us find the perfect settings for our scenes. Urban, rural, or somewhere in between — we need your suggestions.</p>
+            <a href="locations.html" class="btn">View Locations</a>
+          </div>
+          <div class="card">
+            <h3>Behind the Scenes</h3>
+            <p>Get an exclusive look at the making of Echo Child. Photos and videos from our journey.</p>
+            <a href="behind-scenes.html" class="btn">View Gallery</a>
+          </div>
+          <div class="card">
+            <h3>Horror Stories</h3>
+            <p>Share your own horror stories inspired by the film's themes. The best ones may be featured on our platform.</p>
+            <a href="horror-stories.html" class="btn">Submit Story</a>
+          </div>
+          <div class="card">
+            <h3>Comics</h3>
+            <p>Explore our Instagram comic series expanding the Echo Child universe. Visual stories that haunt.</p>
+            <a href="comics.html" class="btn">View Comics</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        <p>&copy; 2026 Echo Child. All rights reserved.</p>
+        <div class="social-links">
+          <a href="#" title="Instagram">Instagram</a>
+          <a href="#" title="YouTube">YouTube</a>
+          <a href="#" title="Email">Email</a>
+        </div>
+      </div>
+    </footer>
+
+  </div><!-- end .page-wrapper -->
 
   <script src="js/main.js"></script>
 </body>
