@@ -5,20 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Horror Stories - Echo Child</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    body.loading .page-wrapper {
-      opacity:0;
-      pointer-events: none;
-    }
-  </style>
 </head>
-<body class="loading page-horror">
-  <div id="intro-loader" class="intro-loader">
-    <div class="intro-content">
-        <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
-      <h1 class="intro-title">Echo Child</h1>
-    </div>
-  </div>
+<body class="page-horror">
 
   <header>
     <div class="container header-inner">
@@ -38,29 +26,26 @@
     </div>
   </header>
 
-  <div class="page-wrapper">
   <section class="page-content">
     <div class="container">
       <h2>Horror Stories</h2>
       <p style="text-align:center; color:var(--text-secondary); margin-bottom:40px; max-width:700px; margin-left:auto; margin-right:auto;">Share your own horror stories inspired by the film's themes. The best ones may be featured!</p>
 
-      <div class="stories-list">
-        <div class="story-card card">
+      <div class="grid">
+        <div class="card">
           <h3>The Whispering Walls</h3>
           <p>When I was seven, I lived in an old farmhouse where the walls would whisper at night. I thought it was my imagination until my little sister started answering back...</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— Sarah M.</p>
+          <p style="color:var(--accent); font-size:0.9rem;">&mdash; Sarah M.</p>
         </div>
-
-        <div class="story-card card">
+        <div class="card">
           <h3>Reflection</h3>
           <p>I woke up at 3am to get water. When I looked in the bathroom mirror, my reflection was still sleeping. I stood there for what felt like hours, watching myself breathe.</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— James T.</p>
+          <p style="color:var(--accent); font-size:0.9rem;">&mdash; James T.</p>
         </div>
-
-        <div class="story-card card">
+        <div class="card">
           <h3>The Last Bus</h3>
           <p>The midnight bus always came at 12:15, but that night it was different. Everyone on board was staring forward, not blinking, not breathing. I was the only one who noticed we were driving off the cliff.</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— Anonymous</p>
+          <p style="color:var(--accent); font-size:0.9rem;">&mdash; Anonymous</p>
         </div>
       </div>
 
@@ -80,7 +65,6 @@
       </div>
     </div>
   </footer>
-  </div>
 
   <script src="js/main.js"></script>
 </body>

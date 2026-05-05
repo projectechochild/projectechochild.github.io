@@ -5,26 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Echo Child - Short Film</title>
   <link rel="stylesheet" href="css/style.css">
-  <style>
-    /* Initial state: hide page content until intro completes */
-    body.loading .page-wrapper {
-      opacity: 0;
-      pointer-events: none;
-    }
-  </style>
 </head>
-<body class="loading page-home">
-  <!-- Intro Loader -->
-  <div id="intro-loader" class="intro-loader">
-    <div class="intro-content">
-      <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
-      <h1 class="intro-title">Echo Child</h1>
-    </div>
-  </div>
+<body class="page-home">
 
   <header>
     <div class="container header-inner">
-        <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+      <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
       <nav>
         <ul>
@@ -39,8 +25,6 @@
       </nav>
     </div>
   </header>
-
-  <div class="page-wrapper">
 
   <section class="hero">
     <div class="hero-bg"></div>
@@ -63,7 +47,7 @@
         </div>
         <div class="card">
           <h3>Find Locations</h3>
-          <p>Help us find the perfect settings for our scenes. Urban, rural, or somewhere in between — we need your suggestions.</p>
+          <p>Help us find the perfect settings for our scenes. Urban, rural, or somewhere in between &mdash; we need your suggestions.</p>
           <a href="locations.html" class="btn">View Locations</a>
         </div>
         <div class="card">
@@ -95,7 +79,6 @@
       </div>
     </div>
   </footer>
-  </div>
 
   <script src="js/main.js"></script>
 </body>
