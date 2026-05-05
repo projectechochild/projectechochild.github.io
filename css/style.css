@@ -57,7 +57,6 @@ body {
   line-height: 1.6;
   min-height: 100vh;
   position: relative;
-  perspective: 1200px;
   overflow-x: hidden;
 }
 
@@ -141,15 +140,11 @@ a, button, .btn, .card, .location-card, .comic-item, .gallery-item, .crew-member
 
 body.loading .page-wrapper {
   opacity: 0;
-  transform: perspective(1200px) rotateX(45deg) translateY(80px) scale(0.9);
   pointer-events: none;
 }
 
 body:not(.loading) .page-wrapper {
   opacity: 1;
-  transform: perspective(1200px) rotateX(0) translateY(0) scale(1);
-  transition: opacity 1.5s ease-out, transform 1.5s cubic-bezier(0.22, 1, 0.36, 1);
-  animation: pageEnter3D 1.5s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
 @keyframes introImageFadeIn {
@@ -168,183 +163,6 @@ body:not(.loading) .page-wrapper {
   40% { transform: translate(2px, 0); }
   60% { transform: translate(-1px, 0); }
   80% { transform: translate(1px, 0); }
-}
-
-.page-transition-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 99999;
-  display: none;
-  pointer-events: none;
-}
-
-.page-transition-overlay.active {
-  display: flex;
-  animation: overlayFadeIn 0.3s ease-out;
-}
-
-.transition-scene {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  transform-style: preserve-3d;
-  perspective: 1200px;
-  width: 100%;
-  height: 100%;
-  position: relative;
-}
-
-.house {
-  position: relative;
-  width: 300px;
-  height: 250px;
-  transform-style: preserve-3d;
-  transform: rotateX(15deg) rotateY(0deg);
-  transition: transform 2s ease-out;
-}
-
-.house.transitioning {
-  transform: rotateX(25deg) rotateY(10deg) scale(1.1);
-}
-
-.house-roof {
-  width: 0;
-  height: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  border-bottom: 120px solid #1a1a1a;
-  position: absolute;
-  top: -100px;
-  left: -10px;
-  filter: drop-shadow(0 0 20px rgba(233, 69, 96, 0.3));
-}
-
-.house-body {
-  width: 300px;
-  height: 200px;
-  background: #111111;
-  border: 2px solid #222222;
-  position: relative;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 30px 40px;
-  box-shadow: 0 0 50px rgba(0, 0, 0, 0.8), inset 0 0 30px rgba(233, 69, 96, 0.05);
-}
-
-.house-window {
-  background: #000000;
-  border: 2px solid #333333;
-  position: relative;
-  overflow: hidden;
-}
-
-.house-window::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(233, 69, 96, 0.1);
-  animation: windowFlicker 3s infinite;
-}
-
-.house-door {
-  grid-column: 2;
-  background: #1a1a1a;
-  border: 2px solid #333333;
-  position: relative;
-  transform-origin: left center;
-  transform: perspective(600px) rotateY(0deg);
-  transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.house-door.open {
-  transform: perspective(600px) rotateY(-90deg);
-}
-
-.house-door::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-  box-shadow: 0 0 10px var(--accent);
-}
-
-.girl-container {
-  position: absolute;
-  bottom: 50px;
-  left: 50%;
-  transform: translateX(-50%) scale(0) perspective(600px) rotateY(0deg);
-  transition: all 1.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-  z-index: 10;
-}
-
-.girl-container.enter {
-  transform: translateX(-50%) scale(1) perspective(600px) rotateY(0deg);
-}
-
-.girl-container.smile {
-  transform: translateX(-50%) scale(1.2) perspective(600px) rotateY(10deg);
-}
-
-.girl {
-  width: 120px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-  filter: grayscale(80%) contrast(1.2) brightness(0.7);
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
-}
-
-.girl-smile {
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  transform: translateX(-50%) scale(0);
-  font-size: 3rem;
-  opacity: 0;
-  transition: all 0.5s ease-out;
-}
-
-.girl-smile.show {
-  transform: translateX(-50%) scale(1);
-  opacity: 1;
-}
-
-.glitch-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-
-.glitch-overlay.active {
-  opacity: 1;
-  animation: transitionGlitch 0.5s infinite;
-}
-
-.glitch-bar {
-  position: absolute;
-  width: 100%;
-  height: 4px;
-  background: var(--accent);
-  box-shadow: 0 0 20px var(--accent), 0 0 40px var(--accent);
-  animation: glitchBarMove 0.1s infinite;
 }
 
 header {
@@ -753,69 +571,6 @@ body::after {
     rgba(0, 0, 0, 0.03) 2px,
     rgba(0, 0, 0, 0.03) 4px
   );
-}
-
-@keyframes pageEnter3D {
-  0% {
-    opacity: 0;
-    transform: perspective(1200px) rotateX(45deg) translateY(80px) scale(0.9);
-  }
-  60% {
-    opacity: 1;
-    transform: perspective(1200px) rotateX(-5deg) translateY(-10px) scale(1.02);
-  }
-  80% {
-    transform: perspective(1200px) rotateX(2deg) translateY(5px) scale(1.01);
-  }
-  100% {
-    opacity: 1;
-    transform: perspective(1200px) rotateX(0) translateY(0) scale(1);
-  }
-}
-
-@keyframes pageExit3D {
-  0% {
-    opacity: 1;
-    transform: perspective(1200px) rotateX(0) translateY(0) scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: perspective(1200px) rotateX(-45deg) translateY(-80px) scale(0.9);
-  }
-}
-
-@keyframes overlayFadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-@keyframes windowFlicker {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.8; }
-  92% { opacity: 0.3; }
-  93% { opacity: 0.9; }
-  94% { opacity: 0.3; }
-}
-
-@keyframes transitionGlitch {
-  0%, 100% { transform: translate(0, 0); }
-  20% { transform: translate(-5px, 0); background: rgba(233, 69, 96, 0.1); }
-  40% { transform: translate(5px, 0); background: rgba(0, 255, 0, 0.05); }
-  60% { transform: translate(-3px, 0); background: rgba(233, 69, 96, 0.1); }
-  80% { transform: translate(3px, 0); background: transparent; }
-}
-
-@keyframes glitchBarMove {
-  0% { top: 0%; }
-  25% { top: 30%; }
-  50% { top: 60%; }
-  75% { top: 40%; }
-  100% { top: 100%; }
-}
-
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
 }
 
 @keyframes float {

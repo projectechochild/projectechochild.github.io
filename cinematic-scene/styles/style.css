@@ -124,93 +124,6 @@ body.loading .page-wrapper {
 
 body:not(.loading) .page-wrapper {
   opacity: 1;
-  transition: opacity 0.8s ease-out;
-}
-
-.page-transition-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: #000;
-  z-index: 99999;
-  display: none;
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.3s ease-out;
-}
-
-.page-transition-overlay.active {
-  display: flex;
-  opacity: 1;
-  justify-content: center;
-  align-items: center;
-}
-
-.transition-scene {
-  text-align: center;
-}
-
-.transition-scene .house {
-  width: 300px;
-  height: 250px;
-  margin: 0 auto 30px;
-}
-
-.house-roof {
-  width: 0;
-  height: 0;
-  border-left: 160px solid transparent;
-  border-right: 160px solid transparent;
-  border-bottom: 120px solid #1a1a1a;
-  margin: 0 auto;
-}
-
-.house-body {
-  width: 300px;
-  height: 200px;
-  background: #111111;
-  border: 2px solid #222222;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-  padding: 30px 40px;
-}
-
-.house-window {
-  background: #000000;
-  border: 2px solid #333333;
-}
-
-.house-door {
-  grid-column: 2;
-  background: #1a1a1a;
-  border: 2px solid #333333;
-  position: relative;
-}
-
-.house-door::after {
-  content: '';
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  width: 8px;
-  height: 8px;
-  background: var(--accent);
-  border-radius: 50%;
-}
-
-.girl-container {
-  margin-top: 20px;
-}
-
-.girl {
-  width: 120px;
-  height: 160px;
-  object-fit: cover;
-  border-radius: 10px;
-  filter: grayscale(80%) contrast(1.2) brightness(0.7);
 }
 
 header {
@@ -604,11 +517,6 @@ body::before {
 @keyframes introTextFadeIn {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fadeInLeft {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
 }
 
 @media (max-width: 768px) {

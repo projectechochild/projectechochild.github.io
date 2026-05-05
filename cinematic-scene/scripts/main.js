@@ -88,59 +88,6 @@
     });
   }
 
-  function initPageTransitions() {
-    var links = document.querySelectorAll('nav a:not(.active), .hero .btn, .card .btn');
-    var transitionOverlay = document.getElementById('page-transition');
-
-    if (!transitionOverlay) {
-      links.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-          var href = this.getAttribute('href');
-          if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http')) {
-            return;
-          }
-
-          e.preventDefault();
-          var pageWrapper = document.querySelector('.page-wrapper');
-          if (pageWrapper) {
-            pageWrapper.style.opacity = '0';
-            pageWrapper.style.transition = 'opacity 0.5s ease-out';
-          }
-
-          setTimeout(function() {
-            window.location.href = href;
-          }, 500);
-        });
-      });
-      return;
-    }
-
-    links.forEach(function(link) {
-      link.addEventListener('click', function(e) {
-        var href = this.getAttribute('href');
-        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http')) {
-          return;
-        }
-
-        e.preventDefault();
-
-        var pageWrapper = document.querySelector('.page-wrapper');
-        if (pageWrapper) {
-          pageWrapper.style.opacity = '0';
-          pageWrapper.style.transition = 'opacity 0.5s ease-out';
-        }
-
-        setTimeout(function() {
-          transitionOverlay.classList.add('active');
-
-          setTimeout(function() {
-            window.location.href = href;
-          }, 800);
-        }, 500);
-      });
-    });
-  }
-
   function toggleDetails(cardId) {
     var card = document.getElementById(cardId);
     if (!card) return;
@@ -195,7 +142,6 @@
     initMobileNav();
     initActiveNav();
     initScrollAnimations();
-    initPageTransitions();
     initEscapeKey();
   });
 
