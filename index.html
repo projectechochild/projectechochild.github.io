@@ -5,8 +5,20 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Echo Child - Short Film</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="chess/chess.css">
 </head>
 <body class="page-home">
+
+  <div id="chess-gate-overlay">
+    <div class="chess-prompt">Make your move</div>
+    <div id="chess-gate-board"></div>
+    <div class="chess-hint">Drag or tap a white piece to begin</div>
+    <button id="chess-skip-btn" class="chess-skip-btn">Enter without playing</button>
+  </div>
+
+  <div id="three-bg-canvas"></div>
+  <div id="cursor-glow"></div>
 
   <header>
     <div class="container header-inner">
@@ -80,6 +92,12 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/page-transitions.js"></script>
+  <script src="effects/flashlight.js"></script>
+  <script src="effects/background.js"></script>
+  <script src="chess/chess-engine.js"></script>
+  <script src="chess/chessboard-ui.js"></script>
 </body>
 </html>

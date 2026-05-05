@@ -1,7 +1,16 @@
 document.addEventListener('DOMContentLoaded', function () {
+  document.body.classList.add('page-fade-ready');
+
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      document.body.classList.add('page-fade-in');
+    });
+  });
+
   initMobileNav();
   initActiveNav();
   initEscapeKey();
+  if (typeof ChessGate !== 'undefined') ChessGate.init();
 });
 
 function initMobileNav() {

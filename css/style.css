@@ -1,3 +1,32 @@
+#three-bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+}
+
+#three-bg-canvas canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+#cursor-glow {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0;
+  background: radial-gradient(600px circle at var(--glow-x, 50%) var(--glow-y, 50%), rgba(255, 204, 136, 0.06), transparent 40%);
+  will-change: background;
+}
+
 @font-face {
   font-family: 'Armavir 03';
   src: url('../assets/fonts/Armavir03.ttf') format('truetype');
