@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Cast - Echo Child</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <style>
     body.loading .page-wrapper {
       opacity: 0;
@@ -15,12 +15,14 @@
 <body class="loading page-cast">
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
         <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
+      </picture>
       <h1 class="intro-title">Echo Child</h1>
     </div>
   </div>
 
-  <!-- Page Transition Overlay -->
   <div id="page-transition" class="page-transition-overlay">
     <div class="transition-scene">
       <div class="house">
@@ -33,18 +35,20 @@
         </div>
       </div>
       <div class="girl-container">
-        <img src="assets/images/logo.png" alt="" class="girl">
-        <div class="girl-smile">😊</div>
-      </div>
-      <div class="glitch-overlay">
-        <div class="glitch-bar"></div>
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="" class="girl">
+        </picture>
       </div>
     </div>
   </div>
 
   <header>
-    <div class="container header-inner">
-      <img src="assets/images/echochild use.png" alt="Echo Child" class="logo-img">
+    <div class="header-inner">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
+        <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+      </picture>
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
       <nav>
         <ul>
@@ -70,7 +74,10 @@
         <div class="character-card" id="jesse">
           <div class="character-header" onclick="toggleDetails('jesse')">
             <div class="character-header-left">
-              <img src="assets/images/Jesse.jpg" alt="Jesse" class="character-img">
+              <picture>
+                <source srcset="assets/images/Jesse.webp" type="image/webp">
+                <img src="assets/images/Jesse.jpg" alt="Jesse" class="character-img" loading="lazy">
+              </picture>
               <div>
                 <h3>Jesse</h3>
                 <p class="character-role">Protagonist - 8 years old</p>
@@ -90,7 +97,10 @@
         <div class="character-card" id="shasha">
           <div class="character-header" onclick="toggleDetails('shasha')">
             <div class="character-header-left">
-              <img src="assets/images/Shasha.jpg" alt="Shasha" class="character-img">
+              <picture>
+                <source srcset="assets/images/Shasha.webp" type="image/webp">
+                <img src="assets/images/Shasha.jpg" alt="Shasha" class="character-img" loading="lazy">
+              </picture>
               <div>
                 <h3>Shasha</h3>
                 <p class="character-role">The Protective Sister - 12 years old</p>
@@ -110,7 +120,10 @@
         <div class="character-card" id="david">
           <div class="character-header" onclick="toggleDetails('david')">
             <div class="character-header-left">
-              <img src="assets/images/David.jpg" alt="David" class="character-img">
+              <picture>
+                <source srcset="assets/images/David.webp" type="image/webp">
+                <img src="assets/images/David.jpg" alt="David" class="character-img" loading="lazy">
+              </picture>
               <div>
                 <h3>David</h3>
                 <p class="character-role">The Father - 40 years old</p>
@@ -130,7 +143,10 @@
         <div class="character-card" id="veil">
           <div class="character-header" onclick="toggleDetails('veil')">
             <div class="character-header-left">
-              <img src="assets/images/The woman with the vail.jpg" alt="The Woman with the Veil" class="character-img">
+              <picture>
+                <source srcset="assets/images/The woman with the vail.webp" type="image/webp">
+                <img src="assets/images/The woman with the vail.jpg" alt="The Woman with the Veil" class="character-img" loading="lazy">
+              </picture>
               <div>
                 <h3>The Woman with the Veil</h3>
                 <p class="character-role">The Mysterious Neighbor - 30s</p>
@@ -150,7 +166,10 @@
         <div class="character-card" id="tom">
           <div class="character-header" onclick="toggleDetails('tom')">
             <div class="character-header-left">
-              <img src="assets/images/Tom the beast.jpg" alt="Tom Wilmington" class="character-img">
+              <picture>
+                <source srcset="assets/images/Tom the beast.webp" type="image/webp">
+                <img src="assets/images/Tom the beast.jpg" alt="Tom Wilmington" class="character-img" loading="lazy">
+              </picture>
               <div>
                 <h3>Tom "The Beast" Wilmington</h3>
                 <p class="character-role">The Antagonist - 45 years old</p>
@@ -190,6 +209,7 @@
     </div>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="scripts/loader.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

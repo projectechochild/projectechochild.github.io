@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Locations - Echo Child</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <style>
     body.loading .page-wrapper {
-      opacity:0;
+      opacity: 0;
       pointer-events: none;
     }
   </style>
@@ -15,12 +15,14 @@
 <body class="loading page-locations">
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
         <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
+      </picture>
       <h1 class="intro-title">Echo Child</h1>
     </div>
   </div>
 
-  <!-- Page Transition Overlay -->
   <div id="page-transition" class="page-transition-overlay">
     <div class="transition-scene">
       <div class="house">
@@ -33,18 +35,20 @@
         </div>
       </div>
       <div class="girl-container">
-        <img src="assets/images/logo.png" alt="" class="girl">
-        <div class="girl-smile">😊</div>
-      </div>
-      <div class="glitch-overlay">
-        <div class="glitch-bar"></div>
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="" class="girl">
+        </picture>
       </div>
     </div>
   </div>
 
   <header>
-    <div class="container header-inner">
-      <img src="assets/images/echochild use.png" alt="Echo Child" class="logo-img">
+    <div class="header-inner">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
+        <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+      </picture>
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
       <nav>
         <ul>
@@ -64,24 +68,22 @@
   <section class="page-content">
     <div class="container">
       <h2>Find Locations</h2>
-      <p style="text-align:center; color:var(--text-secondary); margin-bottom:40px; max-width:700px; margin-left:auto; margin-right:auto;">Help us find the perfect settings for our scenes. Urban, rural, or somewhere in between — we need your suggestions.</p>
+      <p style="text-align:center; color:var(--text-secondary); margin-bottom:40px; max-width:700px; margin-left:auto; margin-right:auto;">We need unique locations to bring the world of Echo Child to life. Help us find the perfect settings.</p>
 
       <div class="grid">
-        <div class="location-card card">
+        <div class="card">
           <h3>The Haunted House</h3>
-          <p>An old Victorian house with a dark past. We need a location that feels isolated, with large windows and a crumbling porch.</p>
+          <p>An old, weathered house with character. Needs a dark, moody atmosphere with plenty of shadows and echoing rooms.</p>
           <a href="#" class="btn">Submit Location</a>
         </div>
-
-        <div class="location-card card">
-          <h3>The Abandoned School</h3>
-          <p>A derelict school building with long, echoing hallways and broken windows. Perfect for the climactic scene.</p>
+        <div class="card">
+          <h3>The Forest Path</h3>
+          <p>Dense woods with winding paths. Misty mornings and dappled sunlight create the perfect eerie atmosphere.</p>
           <a href="#" class="btn">Submit Location</a>
         </div>
-
-        <div class="location-card card">
-          <h3>The Forest Clearing</h3>
-          <p>A dense forest with a small clearing where moonlight can filter through. Remote and eerie atmosphere required.</p>
+        <div class="card">
+          <h3>Urban Alleyways</h3>
+          <p>Gritty urban locations with graffiti-covered walls and flickering streetlights for our city scenes.</p>
           <a href="#" class="btn">Submit Location</a>
         </div>
       </div>
@@ -100,6 +102,7 @@
   </footer>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="scripts/loader.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

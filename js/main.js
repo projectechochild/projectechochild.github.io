@@ -6,21 +6,19 @@ document.addEventListener('DOMContentLoaded', function () {
   initScrollAnimations();
   initPageTransitions();
   initEscapeKey();
+  initAutoPageLoad();
 });
 
 function initIntroLoader() {
   const introLoader = document.getElementById('intro-loader');
   if (!introLoader) return;
 
-  // Prevent scrolling during intro
   document.body.style.overflow = 'hidden';
 
-  // Remove intro after animation completes (2.5s delay + 0.5s fade = 3s total)
   setTimeout(function () {
     finishIntro();
   }, 3000);
 
-  // Allow skipping intro on click
   introLoader.addEventListener('click', function () {
     finishIntro();
   });
@@ -34,7 +32,6 @@ function finishIntro() {
   document.body.classList.remove('loading');
   document.body.style.overflow = '';
 
-  // Remove from DOM after transition
   setTimeout(function () {
     if (introLoader && introLoader.parentNode) {
       introLoader.parentNode.removeChild(introLoader);
@@ -120,6 +117,35 @@ function initScrollAnimations() {
 
 function initPageTransitions() {
   const links = document.querySelectorAll('nav a:not(.active), .hero .btn, .card .btn');
+  const transitionOverlay = document.getElementById('page-transition');
+  const houseDoor = transitionOverlay ? transitionOverlay.querySelector('.house-door') : null;
+  const house = transitionOverlay ? transitionOverlay.querySelector('.house') : null;
+  const girlContainer = transitionOverlay ? transitionOverlay.querySelector('.girl-container') : null;
+  const girlSmile = transitionOverlay ? transitionOverlay.querySelector('.girl-smile') : null;
+  const glitchOverlay = transitionOverlay ? transitionOverlay.querySelector('.glitch-overlay') : null;
+
+  if (!transitionOverlay) {
+    // Fallback: 3D exit animation
+    links.forEach(function (link) {
+      link.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('http')) {
+          return;
+        }
+
+        e.preventDefault();
+        const pageWrapper = document.querySelector('.page-wrapper');
+        if (pageWrapper) {
+          pageWrapper.style.animation = 'pageExit3D 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards';
+        }
+
+        setTimeout(function () {
+          window.location.href = href;
+        }, 800);
+      });
+    });
+    return;
+  }
 
   links.forEach(function (link) {
     link.addEventListener('click', function (e) {
@@ -130,16 +156,58 @@ function initPageTransitions() {
 
       e.preventDefault();
 
-      const pageContent = document.querySelector('.page-content');
-      if (pageContent) {
-        pageContent.style.opacity = '0';
-        pageContent.style.transform = 'translateY(10px)';
-        pageContent.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      // Start 3D exit animation on current page
+      const pageWrapper = document.querySelector('.page-wrapper');
+      if (pageWrapper) {
+        pageWrapper.style.animation = 'pageExit3D 0.8s cubic-bezier(0.55, 0.085, 0.68, 0.53) forwards';
       }
 
+      // Show transition overlay after exit animation
       setTimeout(function () {
-        window.location.href = href;
-      }, 300);
+        transitionOverlay.style.display = 'flex';
+        transitionOverlay.classList.add('active');
+
+        // House 3D effect
+        if (house) {
+          setTimeout(function () {
+            house.classList.add('transitioning');
+          }, 200);
+        }
+
+        // Girl walks in (scale up)
+        if (girlContainer) {
+          setTimeout(function () {
+            girlContainer.classList.add('enter');
+          }, 500);
+        }
+
+        // Girl smiles
+        if (girlSmile) {
+          setTimeout(function () {
+            girlContainer.classList.add('smile');
+            girlSmile.classList.add('show');
+          }, 1500);
+        }
+
+        // Open door
+        if (houseDoor) {
+          setTimeout(function () {
+            houseDoor.classList.add('open');
+          }, 2000);
+        }
+
+        // Glitch effect
+        if (glitchOverlay) {
+          setTimeout(function () {
+            glitchOverlay.classList.add('active');
+          }, 3000);
+        }
+
+        // Navigate to new page
+        setTimeout(function () {
+          window.location.href = href;
+        }, 4000);
+      }, 800);
     });
   });
 }
@@ -191,6 +259,48 @@ function initEscapeKey() {
       }
     }
   });
+}
+
+// Auto-load next page when scrolling to bottom
+function initAutoPageLoad() {
+  const pageOrder = ['index.html', 'cast.html', 'locations.html', 'behind-scenes.html', 'horror-stories.html', 'comics.html', 'about.html'];
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const currentIndex = pageOrder.indexOf(currentPage);
+
+  if (currentIndex === -1 || currentIndex === pageOrder.length - 1) return;
+
+  let isLoading = false;
+  let loadIndicator = null;
+
+  window.addEventListener('scroll', function () {
+    if (isLoading) return;
+
+    const scrollPosition = window.innerHeight + window.scrollY;
+    const documentHeight = document.documentElement.offsetHeight;
+    const threshold = 200;
+
+    if (scrollPosition >= documentHeight - threshold) {
+      isLoading = true;
+      loadNextPage();
+    }
+  });
+
+  function loadNextPage() {
+    const nextPage = pageOrder[currentIndex + 1];
+
+    showLoadIndicator();
+
+    setTimeout(function () {
+      window.location.href = nextPage;
+    }, 800);
+  }
+
+  function showLoadIndicator() {
+    loadIndicator = document.createElement('div');
+    loadIndicator.style.cssText = 'position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(233,69,96,0.9);color:#fff;padding:12px 24px;border-radius:4px;font-family:var(--font-body);z-index:9999;animation:pulse 1s infinite;';
+    loadIndicator.textContent = 'Loading next page...';
+    document.body.appendChild(loadIndicator);
+  }
 }
 
 // Swipe navigation for mobile

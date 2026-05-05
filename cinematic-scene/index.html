@@ -4,9 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Echo Child - Short Film</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <style>
-    /* Initial state: hide page content until intro completes */
     body.loading .page-wrapper {
       opacity: 0;
       pointer-events: none;
@@ -14,15 +13,16 @@
   </style>
 </head>
 <body class="loading page-home">
-  <!-- Intro Loader -->
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
-      <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
+        <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
+      </picture>
       <h1 class="intro-title">Echo Child</h1>
     </div>
   </div>
 
-  <!-- Page Transition Overlay -->
   <div id="page-transition" class="page-transition-overlay">
     <div class="transition-scene">
       <div class="house">
@@ -35,18 +35,20 @@
         </div>
       </div>
       <div class="girl-container">
-        <img src="assets/images/logo.png" alt="" class="girl">
-        <div class="girl-smile">😊</div>
-      </div>
-      <div class="glitch-overlay">
-        <div class="glitch-bar"></div>
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="" class="girl">
+        </picture>
       </div>
     </div>
   </div>
 
   <header>
-    <div class="container header-inner">
-        <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+    <div class="header-inner">
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+        </picture>
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
       <nav>
         <ul>
@@ -63,14 +65,12 @@
   </header>
 
   <div class="page-wrapper">
-
   <section class="hero">
-    <div class="hero-bg"></div>
     <div class="container">
       <h1>Echo Child</h1>
       <p>A haunting short film that explores the echoes of the past and the shadows they cast on the present. Join us in bringing this vision to life.</p>
       <a href="cast.html" class="btn">Join the Cast</a>
-      <a href="about.html" class="btn btn-outline" style="margin-left: 10px;">Learn More</a>
+      <a href="about.html" class="btn btn-outline" style="margin-left:10px;">Learn More</a>
     </div>
   </section>
 
@@ -119,6 +119,7 @@
   </footer>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="scripts/loader.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

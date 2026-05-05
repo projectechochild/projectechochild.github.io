@@ -1,0 +1,14 @@
+{
+  "name": "projectechild-cinematic-scene",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Lightweight cinematic scene website for Echo Child",
+  "main": "node_m-28/server.js",
+  "scripts": {
+    "start": "node node_m-28/server.js",
+    "bun": "bun node_m-28/server.js"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}

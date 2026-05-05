@@ -4,10 +4,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Horror Stories - Echo Child</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="styles/style.css">
   <style>
     body.loading .page-wrapper {
-      opacity:0;
+      opacity: 0;
       pointer-events: none;
     }
   </style>
@@ -15,12 +15,14 @@
 <body class="loading page-horror">
   <div id="intro-loader" class="intro-loader">
     <div class="intro-content">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
         <img src="assets/images/logo.png" alt="Echo Child" class="intro-image">
+      </picture>
       <h1 class="intro-title">Echo Child</h1>
     </div>
   </div>
 
-  <!-- Page Transition Overlay -->
   <div id="page-transition" class="page-transition-overlay">
     <div class="transition-scene">
       <div class="house">
@@ -33,18 +35,20 @@
         </div>
       </div>
       <div class="girl-container">
-        <img src="assets/images/logo.png" alt="" class="girl">
-        <div class="girl-smile">😊</div>
-      </div>
-      <div class="glitch-overlay">
-        <div class="glitch-bar"></div>
+        <picture>
+          <source srcset="assets/images/logo.webp" type="image/webp">
+          <img src="assets/images/logo.png" alt="" class="girl">
+        </picture>
       </div>
     </div>
   </div>
 
   <header>
-    <div class="container header-inner">
-      <img src="assets/images/echochild use.png" alt="Echo Child" class="logo-img">
+    <div class="header-inner">
+      <picture>
+        <source srcset="assets/images/logo.webp" type="image/webp">
+        <img src="assets/images/logo.png" alt="Echo Child" class="logo-img">
+      </picture>
       <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
       <nav>
         <ul>
@@ -66,28 +70,22 @@
       <h2>Horror Stories</h2>
       <p style="text-align:center; color:var(--text-secondary); margin-bottom:40px; max-width:700px; margin-left:auto; margin-right:auto;">Share your own horror stories inspired by the film's themes. The best ones may be featured!</p>
 
-      <div class="stories-list">
-        <div class="story-card card">
+      <div class="grid">
+        <div class="card">
           <h3>The Whispering Walls</h3>
-          <p>When I was seven, I lived in an old farmhouse where the walls would whisper at night. I thought it was my imagination until my little sister started answering back...</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— Sarah M.</p>
+          <p>A family moves into an old house where the walls seem to whisper secrets at night. Based on true events.</p>
+          <a href="#" class="btn">Read More</a>
         </div>
-
-        <div class="story-card card">
-          <h3>Reflection</h3>
-          <p>I woke up at 3am to get water. When I looked in the bathroom mirror, my reflection was still sleeping. I stood there for what felt like hours, watching myself breathe.</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— James T.</p>
+        <div class="card">
+          <h3>Echo Lake</h3>
+          <p>They say if you shout your darkest fear at Echo Lake, it whispers back something worse.</p>
+          <a href="#" class="btn">Read More</a>
         </div>
-
-        <div class="story-card card">
-          <h3>The Last Bus</h3>
-          <p>The midnight bus always came at 12:15, but that night it was different. Everyone on board was staring forward, not blinking, not breathing. I was the only one who noticed we were driving off the cliff.</p>
-          <p style="color:var(--accent); font-size:0.9rem; margin-top:10px;">— Anonymous</p>
+        <div class="card">
+          <h3>Submit Your Story</h3>
+          <p>Have a horrifying tale to share? Send it to us and you might be featured on our site.</p>
+          <a href="#" class="btn">Submit Story</a>
         </div>
-      </div>
-
-      <div style="text-align:center; margin-top:40px;">
-        <a href="#" class="btn">Submit Your Story</a>
       </div>
     </div>
   </section>
@@ -104,6 +102,7 @@
   </footer>
   </div>
 
-  <script src="js/main.js"></script>
+  <script src="scripts/loader.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
