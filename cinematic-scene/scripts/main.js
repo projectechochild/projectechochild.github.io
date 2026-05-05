@@ -59,35 +59,6 @@
     });
   }
 
-  function initScrollAnimations() {
-    var animatedElements = document.querySelectorAll('.card, .character-card');
-
-    if (!('IntersectionObserver' in window)) {
-      animatedElements.forEach(function(el) {
-        el.style.opacity = '1';
-        el.style.transform = 'none';
-        el.classList.add('visible');
-      });
-      return;
-    }
-
-    var observer = new IntersectionObserver(function(entries) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: '0px 0px -50px 0px'
-    });
-
-    animatedElements.forEach(function(el) {
-      observer.observe(el);
-    });
-  }
-
   function toggleDetails(cardId) {
     var card = document.getElementById(cardId);
     if (!card) return;
@@ -141,7 +112,6 @@
     initIntroLoader();
     initMobileNav();
     initActiveNav();
-    initScrollAnimations();
     initEscapeKey();
   });
 

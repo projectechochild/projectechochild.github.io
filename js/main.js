@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', function () {
   initIntroLoader();
   initMobileNav();
   initActiveNav();
-  initSmoothScroll();
-  initScrollAnimations();
   initEscapeKey();
 });
 
@@ -65,54 +63,6 @@ function initActiveNav() {
   });
 }
 
-function initSmoothScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
-    anchor.addEventListener('click', function (e) {
-      const target = document.querySelector(this.getAttribute('href'));
-      if (target) {
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    });
-  });
-}
-
-function initScrollAnimations() {
-  const animatedElements = document.querySelectorAll('.card, .location-card, .comic-item, .gallery-item, .crew-member, .character-card');
-
-  if (!('IntersectionObserver' in window)) {
-    animatedElements.forEach(function (el) {
-      el.style.opacity = '1';
-      el.style.transform = 'none';
-    });
-    return;
-  }
-
-  const observer = new IntersectionObserver(function (entries) {
-    entries.forEach(function (entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0) translateX(0)';
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -50px 0px'
-  });
-
-  animatedElements.forEach(function (el) {
-    el.style.opacity = '0';
-    if (el.classList.contains('location-card') || el.classList.contains('character-card')) {
-      el.style.transform = 'translateX(-30px)';
-    } else {
-      el.style.transform = 'translateY(30px)';
-    }
-    el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
-    observer.observe(el);
-  });
-}
-
 function toggleDetails(cardId) {
   const card = document.getElementById(cardId);
   if (!card) return;
@@ -149,17 +99,6 @@ function closeFormModal(event) {
   setTimeout(function () {
     if (iframe) iframe.src = '';
   }, 300);
-}
-
-function initEscapeKey() {
-  document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape') {
-      const modal = document.getElementById('form-modal');
-      if (modal && modal.classList.contains('active')) {
-        closeFormModal({ target: modal, currentTarget: modal });
-      }
-    }
-  });
 }
 
 function initEscapeKey() {
