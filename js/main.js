@@ -89,6 +89,63 @@ function closeFormModal(event) {
   }, 100);
 }
 
+function rot13(str) {
+  return str.replace(/[a-zA-Z]/g, function (c) {
+    var code = c.charCodeAt(0);
+    if (code >= 65 && code <= 90) return String.fromCharCode(((code - 65 + 13) % 26) + 65);
+    if (code >= 97 && code <= 122) return String.fromCharCode(((code - 97 + 13) % 26) + 97);
+    return c;
+  });
+}
+
+function decryptAllStory() {
+  var input = document.getElementById('story-password');
+  var form = document.getElementById('story-auth-form');
+  var paragraphs = document.querySelectorAll('.story-encrypted:not(.revealed)');
+  var header = document.querySelector('.story-classified-header');
+
+  if (!input || paragraphs.length === 0) return;
+
+  var password = input.value.trim().toUpperCase();
+
+  if (password !== 'ECHO-001') {
+    input.classList.add('denied', 'shake');
+    setTimeout(function () {
+      input.classList.remove('shake');
+    }, 500);
+    setTimeout(function () {
+      input.classList.remove('denied');
+      input.value = '';
+    }, 1500);
+    return;
+  }
+
+  paragraphs.forEach(function (el) {
+    el.textContent = rot13(el.textContent);
+    el.classList.add('revealed');
+  });
+
+  if (form) {
+    var granted = document.createElement('div');
+    granted.className = 'story-auth-granted';
+    granted.textContent = 'ACCESS GRANTED';
+    form.parentNode.replaceChild(granted, form);
+  }
+
+  if (header) {
+    header.classList.add('granted');
+  }
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+  var input = document.getElementById('story-password');
+  if (input) {
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter') decryptAllStory();
+    });
+  }
+});
+
 function initEscapeKey() {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
