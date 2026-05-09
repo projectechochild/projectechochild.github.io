@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
   initEscapeKey();
   initBrokenImages();
   if (typeof ChessGate !== 'undefined') ChessGate.init();
+
 });
 
 function initMobileNav() {

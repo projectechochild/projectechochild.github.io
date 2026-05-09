@@ -95,6 +95,10 @@ body.page-about {
   background: var(--bg-primary) url('../assets/images/7.png') center center / cover no-repeat fixed;
 }
 
+body.page-graph {
+  background: var(--bg-primary) url('../assets/images/7.png') center center / cover no-repeat fixed;
+}
+
 a, button, .btn, .card, .location-card, .comic-item, .gallery-item, .crew-member, .form-card, .character-card {
   cursor: pointer;
 }

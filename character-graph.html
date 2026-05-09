@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Connections - Echo Child</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="graph/graph.css">
+</head>
+<body class="page-graph">
+
+  <header>
+    <div class="container header-inner">
+      <img src="assets/images/echochild use.png" alt="Echo Child" class="logo-img">
+      <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="cast.html">Cast</a></li>
+          <li><a href="locations.html">Locations</a></li>
+          <li><a href="behind-scenes.html">BTS</a></li>
+          <li><a href="horror-stories.html">Horror Stories</a></li>
+          <li><a href="comics.html">Comics</a></li>
+          <li><a href="character-graph.html" class="active">Connections</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="page-content">
+    <div class="container">
+      <h2>Character Connections</h2>
+      <p style="text-align:center; color:var(--text-secondary); margin-bottom:30px; max-width:600px; margin-left:auto; margin-right:auto;">Play chess to move the characters. Each piece on the board is a character &mdash; their position in the graph changes as they move.</p>
+
+      <div class="connections-layout">
+        <div class="connections-graph-panel">
+          <div id="character-graph"></div>
+          <p class="graph-hint">Drag nodes to explore &middot; Scroll to zoom &middot; Hover to highlight connections</p>
+        </div>
+
+        <div class="connections-board-panel">
+          <h3 class="board-panel-title">Play Chess</h3>
+          <div id="live-chess-board" class="live-chess-board"></div>
+          <p class="graph-hint" style="margin-top:10px;">Click a white piece, then click a square to move</p>
+
+          <div class="board-legend">
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x2658;</span>
+              <span class="legend-name">Knight</span>
+              <span>&mdash; Jesse</span>
+            </div>
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x2657;</span>
+              <span class="legend-name">Bishop</span>
+              <span>&mdash; Shasha</span>
+            </div>
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x2656;</span>
+              <span class="legend-name">Rook</span>
+              <span>&mdash; David</span>
+            </div>
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x265B;</span>
+              <span class="legend-name">Queen</span>
+              <span>&mdash; The Veil</span>
+            </div>
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x2654;</span>
+              <span class="legend-name">King</span>
+              <span>&mdash; Tom "The Beast"</span>
+            </div>
+            <div class="board-legend-item">
+              <span class="legend-symbol">&#x2659;</span>
+              <span class="legend-name">Pawn</span>
+              <span>&mdash; Government Spy</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Echo Child. All rights reserved.</p>
+      <div class="social-links">
+        <a href="https://www.instagram.com/echochildfilm/" title="Instagram" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@echochildfilm" title="YouTube" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:contact@echochildfilm.com" title="Email">Email</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="chess/chess-engine.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/page-transitions.js"></script>
+  <script src="graph/graph.js"></script>
+  <script src="graph/chess-board.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      var board = LiveChessBoard.init(function (result) {
+        var captured = []
+        if (result.capturedCharId) captured.push(result.capturedCharId)
+        CharacterGraph.updatePositions(result.positions, captured)
+      })
+
+      if (board) {
+        var positions = LiveChessBoard.getCharacterPositions()
+        CharacterGraph.init(positions)
+      } else {
+        CharacterGraph.init()
+      }
+    })
+  </script>
+</body>
+</html>
