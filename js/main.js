@@ -57,7 +57,7 @@ function toggleDetails(cardId) {
   card.classList.toggle('expanded');
 }
 
-function openFormModal(characterName, characterRole) {
+function openFormModal(characterName, characterRole, formUrl) {
   const modal = document.getElementById('form-modal');
   const title = document.getElementById('modal-title');
   const iframe = document.getElementById('modal-iframe');
@@ -65,7 +65,7 @@ function openFormModal(characterName, characterRole) {
   if (!modal || !title || !iframe) return;
 
   title.textContent = 'Audition for ' + characterName + ' (' + characterRole + ')';
-  iframe.src = 'https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true';
+  iframe.src = formUrl || 'https://docs.google.com/forms/d/e/1FAIpQLSf8jrHPtqQFklJtPdmZYF8jahTUi7tUn__NesYb2GSIEFopaA/viewform?embedded=true';
 
   modal.classList.add('active');
   document.body.style.overflow = 'hidden';
