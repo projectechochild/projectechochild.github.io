@@ -1,13 +1,13 @@
 (function () {
   'use strict';
 
-  var EXCLUDED_PATTERNS = ['#', 'mailto:', 'tel:', 'javascript:', 'http://', 'https://'];
-  var FADE_DURATION = 500;
-  var isNavigating = false;
+  const EXCLUDED_PATTERNS = ['#', 'mailto:', 'tel:', 'javascript:', 'http://', 'https://'];
+  const FADE_DURATION = 500;
+  let isNavigating = false;
 
   function isInternalLink(href) {
     if (!href) return false;
-    for (var i = 0; i < EXCLUDED_PATTERNS.length; i++) {
+    for (let i = 0; i < EXCLUDED_PATTERNS.length; i++) {
       if (href.indexOf(EXCLUDED_PATTERNS[i]) === 0) return false;
     }
     return true;
@@ -33,10 +33,10 @@
   }
 
   document.addEventListener('click', function (e) {
-    var link = e.target.closest('a');
+    const link = e.target.closest('a');
     if (!link) return;
 
-    var href = link.getAttribute('href');
+    const href = link.getAttribute('href');
     if (!isInternalLink(href)) return;
     if (isInChessOverlay(link)) return;
     if (link.getAttribute('target') === '_blank') return;

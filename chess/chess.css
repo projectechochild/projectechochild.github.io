@@ -132,6 +132,16 @@
   filter: drop-shadow(0 0 10px rgba(233, 69, 96, 0.5));
 }
 
+.chess-board.chess-board-checkmate {
+  border-color: #00ff00;
+  box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
+}
+
+.chess-board.chess-board-stalemate {
+  border-color: #ffff00;
+  box-shadow: 0 0 30px rgba(255, 255, 0, 0.3);
+}
+
 #chess-gate-overlay.chess-gate-unlocked {
   opacity: 0;
 }

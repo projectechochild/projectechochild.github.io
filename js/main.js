@@ -10,12 +10,13 @@ document.addEventListener('DOMContentLoaded', function () {
   initMobileNav();
   initActiveNav();
   initEscapeKey();
+  initBrokenImages();
   if (typeof ChessGate !== 'undefined') ChessGate.init();
 });
 
 function initMobileNav() {
-  var toggle = document.querySelector('.mobile-toggle');
-  var nav = document.querySelector('nav');
+  const toggle = document.querySelector('.mobile-toggle');
+  const nav = document.querySelector('nav');
   if (!toggle || !nav) return;
 
   toggle.addEventListener('click', function () {
@@ -24,27 +25,41 @@ function initMobileNav() {
 }
 
 function initActiveNav() {
-  var currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  var navLinks = document.querySelectorAll('nav a');
+  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('nav a');
 
   navLinks.forEach(function (link) {
-    var href = link.getAttribute('href');
+    const href = link.getAttribute('href');
     if (href === currentPage || (currentPage === '' && href === 'index.html')) {
       link.classList.add('active');
     }
   });
 }
 
+function initBrokenImages() {
+  document.querySelectorAll('img').forEach(function (img) {
+    if (img.hasAttribute('onerror')) return;
+    img.addEventListener('error', function () {
+      this.onerror = null;
+      this.style.display = 'none';
+      const placeholder = document.createElement('div');
+      placeholder.className = 'img-placeholder';
+      placeholder.textContent = '?';
+      this.parentNode.insertBefore(placeholder, this);
+    });
+  });
+}
+
 function toggleDetails(cardId) {
-  var card = document.getElementById(cardId);
+  const card = document.getElementById(cardId);
   if (!card) return;
   card.classList.toggle('expanded');
 }
 
 function openFormModal(characterName, characterRole) {
-  var modal = document.getElementById('form-modal');
-  var title = document.getElementById('modal-title');
-  var iframe = document.getElementById('modal-iframe');
+  const modal = document.getElementById('form-modal');
+  const title = document.getElementById('modal-title');
+  const iframe = document.getElementById('modal-iframe');
 
   if (!modal || !title || !iframe) return;
 
@@ -60,8 +75,8 @@ function closeFormModal(event) {
     return;
   }
 
-  var modal = document.getElementById('form-modal');
-  var iframe = document.getElementById('modal-iframe');
+  const modal = document.getElementById('form-modal');
+  const iframe = document.getElementById('modal-iframe');
 
   if (!modal) return;
 
@@ -76,7 +91,7 @@ function closeFormModal(event) {
 function initEscapeKey() {
   document.addEventListener('keydown', function (e) {
     if (e.key === 'Escape') {
-      var modal = document.getElementById('form-modal');
+      const modal = document.getElementById('form-modal');
       if (modal && modal.classList.contains('active')) {
         closeFormModal({ target: modal, currentTarget: modal });
       }

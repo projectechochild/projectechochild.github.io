@@ -1,19 +1,19 @@
 (function () {
   'use strict';
 
-  var overlay = document.getElementById('cursor-glow');
+  const overlay = document.getElementById('cursor-glow');
   if (!overlay) return;
 
-  var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+  const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
   if (isMobile) {
     overlay.style.display = 'none';
     return;
   }
 
-  var x = window.innerWidth / 2;
-  var y = window.innerHeight / 2;
-  var targetX = x;
-  var targetY = y;
+  let x = window.innerWidth / 2;
+  let y = window.innerHeight / 2;
+  let targetX = x;
+  let targetY = y;
 
   document.addEventListener('mousemove', function (e) {
     targetX = e.clientX;
@@ -32,7 +32,7 @@
 
   update();
 
-  var isVisible = false;
+  let isVisible = false;
   document.addEventListener('mouseenter', function () {
     if (!isVisible) {
       overlay.style.opacity = '1';

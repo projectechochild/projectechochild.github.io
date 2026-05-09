@@ -1,27 +1,27 @@
 (function () {
   'use strict';
 
-  var container = document.getElementById('three-bg-canvas');
+  const container = document.getElementById('three-bg-canvas');
   if (!container || !window.THREE) return;
 
-  var isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
-  var PARTICLE_COUNT = isMobile ? 200 : 600;
-  var SPREAD = isMobile ? 8 : 12;
-  var SPEED = isMobile ? 0.15 : 0.3;
+  const isMobile = /Android|iPhone|iPad|iPod|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth < 768;
+  const PARTICLE_COUNT = isMobile ? 200 : 600;
+  const SPREAD = isMobile ? 8 : 12;
+  const SPEED = isMobile ? 0.15 : 0.3;
 
-  var scene = new THREE.Scene();
-  var camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 50);
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 50);
   camera.position.z = 8;
 
-  var renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
+  const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: false, powerPreference: 'low-power' });
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
   renderer.setSize(window.innerWidth, window.innerHeight);
   container.appendChild(renderer.domElement);
 
-  var positions = new Float32Array(PARTICLE_COUNT * 3);
-  var velocities = [];
+  const positions = new Float32Array(PARTICLE_COUNT * 3);
+  const velocities = [];
 
-  for (var i = 0; i < PARTICLE_COUNT; i++) {
+  for (let i = 0; i < PARTICLE_COUNT; i++) {
     positions[i * 3] = (Math.random() - 0.5) * SPREAD;
     positions[i * 3 + 1] = (Math.random() - 0.5) * SPREAD;
     positions[i * 3 + 2] = (Math.random() - 0.5) * (SPREAD * 0.5);
@@ -33,10 +33,10 @@
     });
   }
 
-  var geometry = new THREE.BufferGeometry();
+  const geometry = new THREE.BufferGeometry();
   geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-  var material = new THREE.PointsMaterial({
+  const material = new THREE.PointsMaterial({
     color: 0x888888,
     size: isMobile ? 0.04 : 0.03,
     transparent: true,
@@ -44,11 +44,11 @@
     sizeAttenuation: true
   });
 
-  var particles = new THREE.Points(geometry, material);
+  const particles = new THREE.Points(geometry, material);
   scene.add(particles);
 
-  var mouseX = 0, mouseY = 0;
-  var targetRotX = 0, targetRotY = 0;
+  let mouseX = 0, mouseY = 0;
+  let targetRotX = 0, targetRotY = 0;
 
   if (!isMobile) {
     document.addEventListener('mousemove', function (e) {
@@ -66,8 +66,8 @@
     particles.rotation.y += (targetRotY - particles.rotation.y) * 0.01;
     particles.rotation.x += (targetRotX - particles.rotation.x) * 0.01;
 
-    var pos = geometry.attributes.position.array;
-    for (var i = 0; i < PARTICLE_COUNT; i++) {
+    const pos = geometry.attributes.position.array;
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
       pos[i * 3] += velocities[i].x;
       pos[i * 3 + 1] += velocities[i].y;
       pos[i * 3 + 2] += velocities[i].z;

@@ -10,11 +10,11 @@
 </head>
 <body class="page-home">
 
-  <div id="chess-gate-overlay">
+  <div id="chess-gate-overlay" role="dialog" aria-label="Chess challenge to enter site">
     <div class="chess-prompt">Make your move</div>
-    <div id="chess-gate-board"></div>
+    <div id="chess-gate-board" role="grid" aria-label="Chess board"></div>
     <div class="chess-hint">Drag or tap a white piece to begin</div>
-    <button id="chess-skip-btn" class="chess-skip-btn">Enter without playing</button>
+    <button id="chess-skip-btn" class="chess-skip-btn" aria-label="Skip chess challenge">Enter without playing</button>
   </div>
 
   <div id="three-bg-canvas"></div>
@@ -85,14 +85,14 @@
     <div class="container">
       <p>&copy; 2026 Echo Child. All rights reserved.</p>
       <div class="social-links">
-        <a href="#" title="Instagram">Instagram</a>
-        <a href="#" title="YouTube">YouTube</a>
-        <a href="#" title="Email">Email</a>
+        <a href="https://www.instagram.com/echochildfilm/" title="Instagram" target="_blank" rel="noopener">Instagram</a>
+        <a href="https://www.youtube.com/@echochildfilm" title="YouTube" target="_blank" rel="noopener">YouTube</a>
+        <a href="mailto:contact@echochildfilm.com" title="Email">Email</a>
       </div>
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" onerror="var el=document.createElement('script');el.src='https://cdn.jsdelivr.net/npm/three@0.128.0/build/three.min.js';document.head.appendChild(el)"></script>
   <script src="js/main.js"></script>
   <script src="js/page-transitions.js"></script>
   <script src="effects/flashlight.js"></script>
