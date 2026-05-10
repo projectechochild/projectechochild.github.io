@@ -9,6 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   initMobileNav();
   initActiveNav();
+  initGameNav();
   initEscapeKey();
   initBrokenImages();
   if (typeof ChessGate !== 'undefined') ChessGate.init();
@@ -145,6 +146,45 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 });
+
+function initGameNav() {
+  if (!document.body.classList.contains('page-game')) return;
+  const header = document.querySelector('header');
+  if (!header) return;
+
+  let hideTimeout = null;
+
+  document.addEventListener('mousemove', function (e) {
+    if (e.clientY < 40) {
+      header.classList.add('visible-nav');
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+    } else {
+      if (!hideTimeout) {
+        hideTimeout = setTimeout(function () {
+          header.classList.remove('visible-nav');
+          hideTimeout = null;
+        }, 400);
+      }
+    }
+  });
+
+  document.addEventListener('touchstart', function (e) {
+    const touch = e.touches[0];
+    if (touch && touch.clientY < 60) {
+      header.classList.add('visible-nav');
+      if (hideTimeout) {
+        clearTimeout(hideTimeout);
+        hideTimeout = null;
+      }
+      setTimeout(function () {
+        header.classList.remove('visible-nav');
+      }, 3000);
+    }
+  });
+}
 
 function initEscapeKey() {
   document.addEventListener('keydown', function (e) {

@@ -1,0 +1,306 @@
+/* ── Canvas ── */
+#game-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: block;
+  z-index: 1;
+  cursor: none;
+}
+
+/* ── HUD ── */
+#game-hud {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  pointer-events: none;
+}
+
+.hud-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.7rem;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+.hud-bar {
+  width: 80px;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.hud-fill {
+  height: 100%;
+  width: 30%;
+  background: linear-gradient(90deg, rgba(100, 50, 50, 0.6), rgba(200, 100, 100, 0.4));
+  border-radius: 2px;
+  transition: width 0.5s ease;
+}
+
+#hud-items span {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+#hud-compass {
+  opacity: 0.3;
+}
+
+#compass-needle {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+/* ── Overlays ── */
+.game-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.88);
+}
+
+.overlay-content {
+  text-align: center;
+  max-width: 500px;
+  padding: 40px 30px;
+}
+
+.game-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  color: #ffffff;
+  letter-spacing: 6px;
+  margin-bottom: 10px;
+  text-shadow: 0 0 40px rgba(233, 69, 96, 0.3);
+}
+
+.game-subtitle {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.8rem;
+  color: var(--accent);
+  letter-spacing: 4px;
+  margin-bottom: 30px;
+  opacity: 0.6;
+}
+
+.game-tagline {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: 40px;
+  letter-spacing: 1px;
+  font-style: italic;
+}
+
+.game-btn {
+  display: inline-block;
+  padding: 14px 40px;
+  background: var(--accent);
+  color: #ffffff;
+  text-decoration: none;
+  border: 2px solid var(--accent);
+  font-family: var(--font-heading);
+  font-size: 0.95rem;
+  letter-spacing: 3px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  margin: 5px;
+}
+
+.game-btn:hover {
+  background: transparent;
+  box-shadow: 0 0 30px rgba(233, 69, 96, 0.3);
+}
+
+.game-btn-secondary {
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: var(--text-secondary);
+}
+
+.game-btn-secondary:hover {
+  border-color: var(--text-secondary);
+  background: transparent;
+  box-shadow: none;
+}
+
+.game-controls-hint {
+  margin-top: 40px;
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.25);
+  line-height: 1.8;
+  letter-spacing: 0.5px;
+}
+
+.game-controls-hint strong {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.found-title {
+  font-size: 2rem;
+  color: #ffcc88;
+  text-shadow: 0 0 30px rgba(255, 204, 136, 0.3);
+}
+
+.found-item {
+  margin: 30px 0;
+}
+
+.found-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.found-text {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.9rem;
+}
+
+.escape-title {
+  color: #44ff66;
+  text-shadow: 0 0 30px rgba(68, 255, 102, 0.3);
+}
+
+.game-result-text {
+  font-family: 'Courier New', Courier, monospace;
+  color: var(--text-secondary);
+  margin: 20px 0 30px;
+  line-height: 1.6;
+}
+
+/* ── Mobile Controls ── */
+#mobile-controls {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 50;
+  pointer-events: none;
+}
+
+.touch-zone {
+  position: absolute;
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#touch-joystick {
+  bottom: 30px;
+  left: 30px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+#joystick-knob {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: none;
+}
+
+#touch-action {
+  bottom: 60px;
+  right: 30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: rgba(233, 69, 96, 0.08);
+  border: 1px solid rgba(233, 69, 96, 0.2);
+  color: rgba(233, 69, 96, 0.4);
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.55rem;
+  letter-spacing: 1px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .game-title {
+    font-size: 2rem;
+    letter-spacing: 4px;
+  }
+
+  .game-subtitle {
+    font-size: 0.65rem;
+  }
+
+  .game-btn {
+    padding: 12px 28px;
+    font-size: 0.85rem;
+  }
+
+  #game-hud {
+    bottom: 160px;
+    gap: 12px;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .hud-bar {
+    width: 60px;
+  }
+
+  #touch-joystick {
+    width: 100px;
+    height: 100px;
+    bottom: 20px;
+    left: 20px;
+  }
+
+  #joystick-knob {
+    width: 40px;
+    height: 40px;
+  }
+
+  #touch-action {
+    width: 70px;
+    height: 70px;
+    bottom: 40px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-title {
+    font-size: 1.6rem;
+  }
+
+  .overlay-content {
+    padding: 20px;
+  }
+}
+
+

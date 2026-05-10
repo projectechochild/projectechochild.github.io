@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Horror Game - Echo Child</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/game-style.css">
+</head>
+<body class="page-game">
+
+  <header>
+    <div class="container header-inner">
+      <img src="assets/images/echochild use.png" alt="Echo Child" class="logo-img">
+      <button class="mobile-toggle" aria-label="Toggle menu">&#9776;</button>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="comics.html">Comics</a></li>
+          <li><a href="horror-game.html" class="active">Horror Game</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <canvas id="game-canvas"></canvas>
+
+  <div id="game-hud" style="display:none;">
+    <div id="hud-darkness" class="hud-item">
+      <span class="hud-label">DARKNESS</span>
+      <div class="hud-bar"><div id="darkness-fill" class="hud-fill"></div></div>
+    </div>
+    <div id="hud-items" class="hud-item">
+      <span class="hud-label">ITEMS</span>
+      <span id="item-count">0</span>
+    </div>
+    <div id="hud-compass" class="hud-item">
+      <div id="compass-needle">&#x25B2;</div>
+    </div>
+  </div>
+
+  <div id="mobile-controls" style="display:none;">
+    <div id="touch-joystick" class="touch-zone">
+      <div id="joystick-knob"></div>
+    </div>
+    <div id="touch-action" class="touch-zone">
+      <span>FLASHLIGHT</span>
+    </div>
+  </div>
+
+  <div id="game-start-screen" class="game-overlay">
+    <div class="overlay-content">
+      <h1 class="game-title">ECHO CHILD</h1>
+      <p class="game-subtitle">THE WILMINGTON MANSION</p>
+      <div class="game-tagline">Something stirs in the darkness...</div>
+      <button id="game-start-btn" class="game-btn">ENTER THE MANSION</button>
+      <div class="game-controls-hint">
+        <p><strong>WASD</strong> or <strong>Arrow Keys</strong> to move</p>
+        <p><strong>Mouse</strong> to aim flashlight</p>
+        <p>Find the exit to escape</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="game-found-screen" class="game-overlay" style="display:none;">
+    <div class="overlay-content">
+      <h1 class="game-title found-title">YOU FOUND SOMETHING</h1>
+      <div id="found-item-display" class="found-item">
+        <div class="found-icon">&#x1F4DC;</div>
+        <p id="found-text" class="found-text"></p>
+      </div>
+      <button id="game-continue-btn" class="game-btn">CONTINUE</button>
+    </div>
+  </div>
+
+  <div id="game-end-screen" class="game-overlay" style="display:none;">
+    <div class="overlay-content">
+      <h1 class="game-title escape-title">YOU ESCAPED</h1>
+      <p id="game-result-text" class="game-result-text"></p>
+      <button id="game-restart-btn" class="game-btn">PLAY AGAIN</button>
+      <a href="index.html" class="game-btn game-btn-secondary">BACK HOME</a>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Echo Child. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/page-transitions.js"></script>
+  <script src="js/game.js"></script>
+</body>
+</html>

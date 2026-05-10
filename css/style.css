@@ -99,6 +99,40 @@ body.page-graph {
   background: var(--bg-primary) url('../assets/images/7.png') center center / cover no-repeat fixed;
 }
 
+body.page-game {
+  background: #050505;
+}
+
+.page-game header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 2000;
+  transform: translateY(-100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(5, 5, 5, 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgba(233, 69, 96, 0.15);
+}
+
+.page-game header.visible-nav {
+  transform: translateY(0);
+}
+
+.page-game .header-inner {
+  padding: 10px 20px;
+}
+
+.page-game .logo-img {
+  height: 32px;
+}
+
+.page-game footer {
+  display: none;
+}
+
 a, button, .btn, .card, .location-card, .comic-item, .gallery-item, .crew-member, .form-card, .character-card {
   cursor: pointer;
 }
